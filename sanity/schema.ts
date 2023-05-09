@@ -1,9 +1,16 @@
 import { SchemaTypeDefinition, defineType } from 'sanity';
-import { Homepage, Project } from './schemaTypes';
+import { Categories, Homepage, Project, Roles } from './schemaTypes';
+
+const singletonTypes = new Set(["homepage"])
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     Project,
-    Homepage
+    Homepage,
+    Categories,
+    Roles,
   ],
+  //@ts-ignore
+  templates: (templates: any) =>
+      templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
 }

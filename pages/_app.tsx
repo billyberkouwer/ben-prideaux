@@ -1,6 +1,5 @@
 import 'styles/global.css'
-
-import { IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
+import { Gayathri, IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
 import { AppProps } from 'next/app'
 
 const mono = IBM_Plex_Mono({
@@ -9,10 +8,10 @@ const mono = IBM_Plex_Mono({
   weight: ['500', '700'],
 })
 
-const sans = Inter({
+const sans = Gayathri({
   variable: '--font-sans',
   subsets: ['latin'],
-  weight: ['500', '700', '800'],
+  weight: ['100', '400', '700'],
 })
 
 const serif = PT_Serif({

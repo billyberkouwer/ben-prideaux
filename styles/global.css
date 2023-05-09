@@ -1,3 +1,34 @@
+@layer components {
+  .wh-inherit {
+    width: inherit;
+    height: inherit;
+  }
+
+  .h-75vh {
+    height: 75vh;
+    height: 75svh;
+  }
+
+  .min-h-96 {
+    min-height: 24rem;
+  }
+
+  .page-max-w {
+    width: 100%;
+    max-width: 1500px;
+  }
+
+  .page-w {
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .format-text a, .format-text button, .format-text li, .format-text h1, .format-text h2, .format-text h3, .format-text h4, .format-text h5, .format-text h6, .format-text p, .format-text span, .format-text strong {
+    /* line-height: 0.75em;
+    padding-top: 0.15em; */
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
