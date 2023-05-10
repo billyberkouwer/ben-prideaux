@@ -48,17 +48,17 @@ const SplashSection = forwardRef(({ splashScreenVideo, portfolioSubTitle, portfo
 
   return (
     <>
-      <section ref={sectionRef} className='header relative top-0 flex flex-col w-full mx-auto min-h-96 h-75vh text-stone-100 justify-center'>
+      <section ref={sectionRef} className='header  overflow-hidden relative top-0 flex flex-col w-full mx-auto min-h-96 h-75vh text-stone-100 justify-center'>
         <div className="fixed wh-inherit top-0 left-0">
           {splashScreenVideo?.asset?.url ? <Image src={splashScreenVideo.asset.url} className='relative object-cover' fill alt="header" /> : null}
         </div>
         <div ref={titleContainer} className='relative w-full' style={{ height: titleContainerSize.height + 'px' }}>
           <div ref={titleRef} className='relative h-fit w-full transition-colors duration-200 ease-in-out' style={{ zIndex: 1 }}>
-            <div className='container mx-auto'>
+            <div className='page-max-w mx-auto'>
               <h1 ref={titleText} className="relative transition-colors duration-1000 pt-8 text-6xl h-fit page-max-w px-8">{portfolioTitle}</h1>
             </div>
           </div>
-          <div className='container mx-auto'>
+          <div className='page-max-w mx-auto'>
             {portfolioSubTitle ? <h2 ref={subtitleText} className="absolute bottom-0 transition-opacity text-3xl h-fit page-max-w px-8">{portfolioSubTitle}</h2> : null}
           </div>
         </div>

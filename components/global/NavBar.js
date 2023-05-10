@@ -49,7 +49,7 @@ export default function NavBar({ handleDisplayContact, isContactDisplayed, title
         <>
             <div ref={navWrapper} className="w-full relative">
                 <nav ref={navContainer} className=" transition-colors relative w-full duration-1000 backdrop-blur-xl border-y top-0 border-white z-10">
-                    <ul className="px-4 text-2xl py-2 page-max-w mx-auto ">
+                    <ul className="text-2xl py-2 page-max-w px-8 mx-auto ">
                         {route === '/' ?
                             <li>
                                 <button className="flex gap-2" onClick={handleDisplayContact}><span className="mt-2">Contact</span>

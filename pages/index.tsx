@@ -61,7 +61,7 @@ export default function HomePage({
         <SplashSection ref={titleRef} splashScreenVideo={splashScreenVideo} portfolioSubTitle={portfolioSubTitle} portfolioTitle={portfolioTitle} scrollAmount={scrollAmount} />
         <NavBar isColorLight={isColorLight} scrollAmount={scrollAmount} titleHeight={titleHeight} handleDisplayContact={handleDisplayContact} isContactDisplayed={isContactDisplayed} />
         <div ref={contentContainer} className="relative bg-dark transition-colors duration-1000">
-          <TileSection  projectsData={projectsData} />
+          <TileSection projectsData={projectsData} />
         </div>
       </div>
     </>
