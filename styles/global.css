@@ -27,6 +27,11 @@
     /* line-height: 0.75em;
     padding-top: 0.15em; */
   }
+
+  .min-h-90vh {
+    min-height: 90vh;
+    min-height: 90svh;
+  }
 }
 
 @tailwind base;

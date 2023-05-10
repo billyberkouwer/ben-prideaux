@@ -28,7 +28,7 @@ export default function HomePage({
 
   useEffect(() => {
     setTitleHeight(titleRef.current.getBoundingClientRect().height);
-  }, [])
+  }, [windowSize])
 
   function handleDisplayContact() {
     if (isContactDisplayed) {
@@ -60,7 +60,7 @@ export default function HomePage({
         {/*@ts-ignore*/}
         <SplashSection ref={titleRef} splashScreenVideo={splashScreenVideo} portfolioSubTitle={portfolioSubTitle} portfolioTitle={portfolioTitle} scrollAmount={scrollAmount} />
         <NavBar isColorLight={isColorLight} scrollAmount={scrollAmount} titleHeight={titleHeight} handleDisplayContact={handleDisplayContact} isContactDisplayed={isContactDisplayed} />
-        <div ref={contentContainer} className="relative bg-dark transition-colors duration-1000">
+        <div ref={contentContainer} className="min-h-90vh relative bg-dark transition-colors duration-1000">
           <TileSection projectsData={projectsData} />
         </div>
       </div>

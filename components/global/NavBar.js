@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react";
 import MoreIcon from './MoreIcon';
 import { darkCol, darkColTransparent, lightCol, lightColTransparent } from "styles/tailwindStyles";
+import usePageSize from "hooks/usePageSize";
 
 export default function NavBar({ handleDisplayContact, isContactDisplayed, titleHeight, scrollAmount, isColorLight }) {
     const route = useRouter().route;
@@ -10,6 +10,7 @@ export default function NavBar({ handleDisplayContact, isContactDisplayed, title
     const navContainer = useRef();
     const navWrapper = useRef();
     const navPositionPlaceholder = useRef();
+    const useWindowSize = usePageSize()
 
     useEffect(() => {
         if (isColorLight) {
@@ -26,7 +27,6 @@ export default function NavBar({ handleDisplayContact, isContactDisplayed, title
 
     useEffect(() => {
         navPositionPlaceholder.current.style.height = navContainer.current.getBoundingClientRect().height + "px";
-
         if (navWrapper.current.getBoundingClientRect().top - titleHeight <= 0) {
             navContainer.current.style.position = "fixed";
             navWrapper.current.style.height = navContainer.current.getBoundingClientRect().height + "px";
@@ -35,7 +35,7 @@ export default function NavBar({ handleDisplayContact, isContactDisplayed, title
             navContainer.current.style.position = "relative";
             navContainer.current.style.top = "0px";
         }
-    }, [scrollAmount, titleHeight])
+    }, [scrollAmount, titleHeight, useWindowSize])
 
     useEffect(() => {
         if (isContactDisplayed) {
@@ -48,8 +48,8 @@ export default function NavBar({ handleDisplayContact, isContactDisplayed, title
     return (
         <>
             <div ref={navWrapper} className="w-full relative">
-                <nav ref={navContainer} className=" transition-colors relative w-full duration-1000 backdrop-blur-xl border-y top-0 border-white z-10">
-                    <ul className="text-2xl py-2 page-max-w px-8 mx-auto ">
+                <nav ref={navContainer} className="transition-colors relative w-full duration-1000 backdrop-blur-xl border-y top-0 border-white z-10">
+                    <ul className="text-lg sm:text-xl lg:text-2xl py-2 page-max-w px-8 mx-auto ">
                         {route === '/' ?
                             <li>
                                 <button className="flex gap-2" onClick={handleDisplayContact}><span className="mt-2">Contact</span>
