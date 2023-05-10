@@ -26,6 +26,9 @@
   .format-text a, .format-text button, .format-text li, .format-text h1, .format-text h2, .format-text h3, .format-text h4, .format-text h5, .format-text h6, .format-text p, .format-text span, .format-text strong {
     /* line-height: 0.75em;
     padding-top: 0.15em; */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
   }
 }
 
