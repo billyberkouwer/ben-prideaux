@@ -1,16 +1,16 @@
-import Image from 'next/image';
 import { client } from '../sanity/lib/client';
 import NavBar from '../components/global/NavBar'
-import Tile from '../components/homepage/Tile';
+import TileSection from '../components/homepage/TileSection';
 import SplashSection from '../components/homepage/SplashSection';
 import useScrollTrigger from '../hooks/useScrollTrigger'
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import usePageSize from 'hooks/usePageSize';
+import { darkCol, lightCol } from '../styles/tailwindStyles'
 
 export default function HomePage({
   homepageData,
   projectsData
 }) {
-
   const {
     portfolioTitle,
     portfolioSubTitle,
@@ -18,8 +18,10 @@ export default function HomePage({
   } = homepageData;
 
   const scrollAmount = useScrollTrigger();
-
+  const windowSize = usePageSize()
   const [isContactDisplayed, setIsContactDisplayed] = useState(false);
+  const pageContainer = useRef() as MutableRefObject<any>;
+  const contentContainer = useRef() as MutableRefObject<any>;
 
   function handleDisplayContact() {
     if (isContactDisplayed) {
@@ -29,19 +31,27 @@ export default function HomePage({
     }
   }
 
+  useEffect(() => {
+    if (pageContainer.current && contentContainer.current) {
+      if (scrollAmount > (windowSize.y / 3)) {
+        pageContainer.current.style.color = darkCol;
+        contentContainer.current.style.backgroundColor = lightCol;
+        pageContainer.current.style.backgroundColor = lightCol;
+      } else {
+        pageContainer.current.style.color = lightCol;
+        contentContainer.current.style.backgroundColor = darkCol;
+        pageContainer.current.style.backgroundColor = darkCol;
+      }
+    }
+  }, [scrollAmount, windowSize])
+
   return (
     <>
-      <div className="bg-gray-100 h-fit format-text">
+      <div ref={pageContainer} className="bg-gray-100 h-fit format-text text-light bg-dark transition-colors duration-1000">
         <SplashSection splashScreenVideo={splashScreenVideo} portfolioSubTitle={portfolioSubTitle} portfolioTitle={portfolioTitle} scrollAmount={scrollAmount} />
         <NavBar handleDisplayContact={handleDisplayContact} isContactDisplayed={isContactDisplayed} />
-        <div className="bg-white relative">
-          <section className='flex flex-col container page-w mx-auto py-8'>
-            <div className="grid gap-4 grid-cols-3 auto-rows-tile mx-10">
-              {projectsData.map((project, i) => (
-                <Tile key={project.projectTitle + i} {...project} />
-              ))}
-            </div>
-          </section>
+        <div ref={contentContainer} className="relative bg-dark transition-colors duration-1000">
+          <TileSection projectsData={projectsData} />
         </div>
       </div>
     </>

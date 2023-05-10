@@ -15,6 +15,14 @@ module.exports = {
     extend: {
       gridAutoRows: {
         'tile': 'minmax(200px, 1fr)',
+      },
+      backgroundColor: {
+        dark: 'rgba(29, 26, 26, 1)',
+        light: 'rgba(255, 255, 255, 1)'
+      },
+      colors: {
+        dark: 'rgba(29, 26, 26, 1)',
+        light: 'rgba(255, 255, 255, 1)'
       }
     }
   },
