@@ -22,6 +22,13 @@ export default function HomePage({
   const [isContactDisplayed, setIsContactDisplayed] = useState(false);
   const pageContainer = useRef() as MutableRefObject<any>;
   const contentContainer = useRef() as MutableRefObject<any>;
+  const titleRef = useRef() as MutableRefObject<any>;
+  const [titleHeight, setTitleHeight] = useState(undefined);
+  const [isColorLight, setIsColorLight] = useState<boolean | undefined>();
+
+  useEffect(() => {
+    setTitleHeight(titleRef.current.getBoundingClientRect().height);
+  }, [])
 
   function handleDisplayContact() {
     if (isContactDisplayed) {
@@ -34,10 +41,12 @@ export default function HomePage({
   useEffect(() => {
     if (pageContainer.current && contentContainer.current) {
       if (scrollAmount > (windowSize.y / 3)) {
+        setIsColorLight(true);
         pageContainer.current.style.color = darkCol;
         contentContainer.current.style.backgroundColor = lightCol;
         pageContainer.current.style.backgroundColor = lightCol;
       } else {
+        setIsColorLight(false);
         pageContainer.current.style.color = lightCol;
         contentContainer.current.style.backgroundColor = darkCol;
         pageContainer.current.style.backgroundColor = darkCol;
@@ -48,10 +57,11 @@ export default function HomePage({
   return (
     <>
       <div ref={pageContainer} className="bg-gray-100 h-fit format-text text-light bg-dark transition-colors duration-1000">
-        <SplashSection splashScreenVideo={splashScreenVideo} portfolioSubTitle={portfolioSubTitle} portfolioTitle={portfolioTitle} scrollAmount={scrollAmount} />
-        <NavBar handleDisplayContact={handleDisplayContact} isContactDisplayed={isContactDisplayed} />
+        {/*@ts-ignore*/}
+        <SplashSection ref={titleRef} splashScreenVideo={splashScreenVideo} portfolioSubTitle={portfolioSubTitle} portfolioTitle={portfolioTitle} scrollAmount={scrollAmount} />
+        <NavBar isColorLight={isColorLight} scrollAmount={scrollAmount} titleHeight={titleHeight} handleDisplayContact={handleDisplayContact} isContactDisplayed={isContactDisplayed} />
         <div ref={contentContainer} className="relative bg-dark transition-colors duration-1000">
-          <TileSection projectsData={projectsData} />
+          <TileSection  projectsData={projectsData} />
         </div>
       </div>
     </>
