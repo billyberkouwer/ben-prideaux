@@ -15,7 +15,7 @@ export default function NavBar({ handleDisplayContact, isContactDisplayed }) {
     }, [isContactDisplayed])
 
     return (
-        <nav className="bg-white/40 backdrop-blur-md border-y border-white">
+        <nav className="bg-white/40 backdrop-blur-md border-y top-0 border-white">
             <ul className="px-8 text-2xl py-2 page-max-w mx-auto ">
                 {route === '/' ?
                     <li>

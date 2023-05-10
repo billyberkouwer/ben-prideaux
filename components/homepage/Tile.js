@@ -2,7 +2,6 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
 export default function Tile({isPriority, projectThumbnail, projectTitle, homepageExcerpt}) {
-    console.log(projectThumbnail)
 
     return (
         <div className={`contain grid grid-rows-[8fr_1fr_2fr] ${isPriority ? ' col-span-2' : ' col-span-1'}`}>
