@@ -1,0 +1,58 @@
+@import "@/styles/_helpers.scss";
+
+.nav__wrapper {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.5s, border-color 0.5s;
+
+    &.bright {
+        color: $white;
+        border-color: $white;
+
+        .project__list {
+            backdrop-filter: blur(40);
+        }
+    }
+}
+
+.nav-list__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "projects nav contact";
+    border-top: solid 1px;
+    overflow: hidden;
+}
+
+.nav__list {
+    display: flex;
+    grid-area: nav;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+
+    li {
+        cursor: pointer;
+    }
+}
+
+.project__list {
+    display: flex;
+    grid-area: projects;
+    flex-direction: column;
+    gap: 10px;
+    height: 50vh;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(0);
+    transition: backdrop-filter 0.5s;
+
+    li {
+        text-align: right;
+        padding-right: 1rem;
+    }
+}
