@@ -2,12 +2,26 @@
 
 import { motion, useAnimate, stagger } from "motion/react";
 import "./nav.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
+const navButton = {
+  initial: {
+    fontWeight: 400,
+    duration: 0.2,
+  },
+  animate: {
+    fontWeight: 500,
+    transition: { duration: 0.2 },
+  },
+};
 
 export default function Nav() {
   const [isProjectListOpen, setIsProjectListOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [scope, animate] = useAnimate();
   const [isBright, setIsBright] = useState(false);
+  const nav = useRef(null);
 
   useEffect(() => {
     if (isProjectListOpen) {
@@ -29,41 +43,82 @@ export default function Nav() {
         }, 6000);
       }
     };
-    document.addEventListener("mousemove", mouseMove);
-    document.addEventListener("touchmove", mouseMove);
+    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousedown", mouseMove);
+    window.addEventListener("click", mouseMove);
+    window.addEventListener("touchmove", mouseMove);
     return () => {
-      document.removeEventListener("mousemove", mouseMove);
-      document.removeEventListener("touchmove", mouseMove);
+      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousedown", mouseMove);
+      window.removeEventListener("click", mouseMove);
+      window.removeEventListener("touchmove", mouseMove);
     };
   }, []);
 
   return (
     <motion.nav
       className={`nav__wrapper ${isBright ? "bright" : "dim"}`}
+      ref={nav}
     >
-      <div className="nav-list__container">
-        <motion.ul
-          initial={{ y: "-100%" }}
-          animate={isProjectListOpen ? { y: 0 } : { y: "-100%" }}
-          transition={{ ease: "easeOut", duration: 0.5 }}
-          className="project__list"
-          ref={scope}
-        >
-          <li>By The Sea</li>
-          <li>By The Sea</li>
-          <li>By The Sea</li>
-          <li>By The Sea</li>
-          <li>By The Sea</li>
-          <li>By The Sea</li>
-          <li>By The Sea</li>
-        </motion.ul>
-        <ul className="nav__list">
-          <li onClick={() => setIsProjectListOpen(!isProjectListOpen)}>
+      <ul className="nav-list__wrapper">
+        <div className="nav-list__container">
+          <motion.li
+            animate={!isProjectListOpen ? navButton.initial : navButton.animate}
+            onClick={() => setIsProjectListOpen(!isProjectListOpen)}
+          >
             Projects
+          </motion.li>
+          <li id="name">
+            <Link href={"/"}>Ben Prideaux</Link>
           </li>
-          <li>Ben Prideaux</li>
-          <li>Contact</li>
-        </ul>
+          <motion.li
+            animate={!isContactOpen ? navButton.initial : navButton.animate}
+            onClick={() => setIsContactOpen(!isContactOpen)}
+          >
+            Contact
+          </motion.li>
+        </div>
+      </ul>
+      <div className="nav-grid-content__container">
+        <div className="project-list__wrapper">
+          <motion.ul
+            initial={{ y: "var(--project-closed)" }}
+            animate={
+              isProjectListOpen
+                ? { y: "var(--project-open)"}
+                : { y: "var(--project-closed)"  }
+            }
+            transition={{ ease: "easeOut", duration: 0.5 }}
+            className="project__list"
+            ref={scope}
+          >
+            <li><Link href={"/"}>By The Sea</Link></li>
+            <li><Link href={"/"}>By The Sea</Link></li>
+            <li><Link href={"/"}>By The Sea</Link></li>
+            <li><Link href={"/"}>By The Sea</Link></li>
+            <li><Link href={"/"}>By The Sea</Link></li>
+            <li><Link href={"/"}>By The Sea</Link></li>
+          </motion.ul>
+        </div>
+        <div className="contact-form__wrapper">
+          <motion.ul
+            initial={{ y: "var(--contact-closed)" }}
+            animate={
+              isContactOpen
+                ? { y: "var(--contact-open)" }
+                : { y: "var(--contact-closed)" }
+            }
+            transition={{ ease: "easeOut", duration: 0.5 }}
+            className="contact-form__container"
+          >
+            <form>
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Your Email" />
+              <textarea placeholder="Your Message"></textarea>
+              <button type="submit">Submit</button>
+            </form>
+          </motion.ul>
+        </div>
       </div>
     </motion.nav>
   );

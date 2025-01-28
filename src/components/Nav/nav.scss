@@ -1,58 +1,212 @@
-@import "@/styles/_helpers.scss";
+@import "@/styles/helpers.scss";
 
-.nav__wrapper {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    color: rgba(255,255,255,0.35);
-    transition: color 0.5s, border-color 0.5s;
+nav {
+    z-index: 9;
+    position: relative;
+    transition: border-color 1s, color 1s;
 
-    &.bright {
-        color: $white;
-        border-color: $white;
+    &.dim {
+        color: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.25);
 
+        form,
+        input,
+        textarea,
+        button {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .contact-form__container,
         .project__list {
-            backdrop-filter: blur(40);
+            backdrop-filter: blur(0px);
         }
     }
-}
 
-.nav-list__container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "projects nav contact";
-    border-top: solid 1px;
-    overflow: hidden;
-}
+    &.bright {
 
-.nav__list {
-    display: flex;
-    grid-area: nav;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-
-    li {
-        cursor: pointer;
+        .contact-form__container,
+        .project__list {
+            backdrop-filter: blur(40px);
+        }
     }
-}
 
-.project__list {
-    display: flex;
-    grid-area: projects;
-    flex-direction: column;
-    gap: 10px;
-    height: 50vh;
-    border-right: 1px solid;
-    border-bottom: 1px solid;
-    overflow-y: auto;
-    background-color: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(0);
-    transition: backdrop-filter 0.5s;
 
-    li {
-        text-align: right;
-        padding-right: 1rem;
+    .nav-list__wrapper {
+        position: fixed;
+        top: 50%;
+        width: 100%;
+        display: grid;
+        border-top: 1px solid;
+        pointer-events: none;
+
+        @include md {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                "a b c";
+        }
+
+        z-index: 999;
+    }
+
+    .nav-list__container {
+        display: flex;
+
+        @include md {
+            grid-area: b;
+        }
+
+        width: 100%;
+        justify-content: space-between;
+        text-transform: uppercase;
+        pointer-events: all;
+
+        li {
+            cursor: pointer;
+            text-align: center;
+        }
+    }
+
+    #name {
+        font-weight: 500;
+    }
+
+    .nav-grid-content__container {
+        width: 100%;
+        position: fixed;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: grid;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "a"
+            "b";
+
+        @include md {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            grid-template-areas:
+                "a b c"
+                "d e f";
+        }
+    }
+
+    .project-list__wrapper {
+        grid-area: a;
+        overflow: hidden;
+        height: 100%;
+
+        @include md {
+            grid-area: d;
+        }
+    }
+
+    .project__list {
+        --project-closed: 100%;
+        --project-open: 0%;
+
+        @include md {
+            --project-closed: -100%;
+            --project-open: 0%;
+        }
+        height: 100%;
+        transition: backdrop-filter 1s;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0 .5rem;
+        gap: .5rem;
+        border-top: solid 1px;
+
+        @include md {
+            border-right: solid 1px;
+            border-bottom: solid 1px;
+            border-top: none;
+        }
+    }
+
+    .contact-form__wrapper {
+        grid-area: b;
+        overflow: hidden;
+        align-self: flex-end;
+        height: 100%;
+
+        @include md {
+            grid-area: c;
+
+        }
+    }
+
+    .contact-form__container {
+        --contact-closed: -100%;
+        --contact-open: 0%;
+
+        @include md {
+            --contact-closed: 100%;
+            --contact-open: 0%;
+        }
+
+        padding-top: 2rem;
+
+        @include md {
+            padding-top: 0;
+        }
+
+        height: 100%;
+        transition: backdrop-filter 1s;
+        gap: .5rem;
+        overflow-y: auto;
+    }
+
+    form {
+        border-top: solid 1px;
+        border-bottom: solid 1px;
+        box-sizing: border-box;
+        height: calc(100% - 2rem);
+
+        @include md {
+            height: 100%;
+            border-left: solid 1px;
+            border-bottom: none;
+        }
+
+        display: flex;
+        flex-direction: column;
+
+        input {
+            position: relative;
+            height: 10%;
+        }
+
+        textarea {
+            position: relative;
+            height: 70%;
+            padding: 1rem 0.25rem;
+            resize: none;
+        }
+
+        button[type="submit"] {
+            cursor: pointer;
+            height: 10%;
+        }
+
+        form,
+        input,
+        textarea {
+            color: $white;
+            transition: color 1s;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            transition: color 1s, background-color 0.5s;
+            text-align: left;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.25);
+            }
+        }
     }
 }
