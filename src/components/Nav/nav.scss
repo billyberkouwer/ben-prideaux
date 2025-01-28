@@ -110,8 +110,10 @@ nav {
             --project-closed: -100%;
             --project-open: 0%;
         }
+
         height: 100%;
-        transition: backdrop-filter 1s;
+        transition: backdrop-filter 1s,
+        border-color 1s;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -154,7 +156,8 @@ nav {
         }
 
         height: 100%;
-        transition: backdrop-filter 1s;
+        transition: backdrop-filter 1s,
+        border-color 1s, color 1s;
         gap: .5rem;
         overflow-y: auto;
     }
@@ -167,12 +170,14 @@ nav {
 
         @include md {
             height: 100%;
-            border-left: solid 1px;
+            border-left: solid 1;
             border-bottom: none;
         }
 
         display: flex;
         flex-direction: column;
+        transition: border-color 1s,
+        color 0.5s;
 
         input {
             position: relative;

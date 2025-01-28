@@ -2,7 +2,13 @@
 
 import { motion, useAnimate, stagger } from "motion/react";
 import "./nav.scss";
-import { useEffect, useRef, useState } from "react";
+import {
+  MutableRefObject,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 
 const navButton = {
@@ -16,12 +22,28 @@ const navButton = {
   },
 };
 
+const mouseMove = (
+  isScheduled: RefObject<boolean>,
+  setState: (arg: boolean) => void
+) => {
+  setState(true);
+  if (!isScheduled.current) {
+    isScheduled.current = true;
+    setTimeout(() => {
+      setState(false);
+      isScheduled.current = false;
+    }, 2000);
+  }
+};
+
 export default function Nav() {
   const [isProjectListOpen, setIsProjectListOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [scope, animate] = useAnimate();
   const [isBright, setIsBright] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const nav = useRef(null);
+  const isScheduled = useRef(false);
 
   useEffect(() => {
     if (isProjectListOpen) {
@@ -32,36 +54,43 @@ export default function Nav() {
   }, [isProjectListOpen, animate]);
 
   useEffect(() => {
-    let scheduled = false;
-    const mouseMove = () => {
-      setIsBright(true);
-      if (!scheduled) {
-        scheduled = true;
-        setTimeout(() => {
-          setIsBright(false);
-          scheduled = false;
-        }, 6000);
-      }
-    };
-    window.addEventListener("mousemove", mouseMove);
-    window.addEventListener("mousedown", mouseMove);
-    window.addEventListener("click", mouseMove);
-    window.addEventListener("touchmove", mouseMove);
+    window.addEventListener("mousemove", () =>
+      mouseMove(isScheduled, setIsBright)
+    );
+    window.addEventListener("mousedown", () =>
+      mouseMove(isScheduled, setIsBright)
+    );
+    window.addEventListener("click", () => mouseMove(isScheduled, setIsBright));
+    window.addEventListener("touchmove", () =>
+      mouseMove(isScheduled, setIsBright)
+    );
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
-      window.removeEventListener("mousedown", mouseMove);
-      window.removeEventListener("click", mouseMove);
-      window.removeEventListener("touchmove", mouseMove);
+      window.removeEventListener("mousemove", () =>
+        mouseMove(isScheduled, setIsBright)
+      );
+      window.removeEventListener("mousedown", () =>
+        mouseMove(isScheduled, setIsBright)
+      );
+      window.removeEventListener("click", () =>
+        mouseMove(isScheduled, setIsBright)
+      );
+      window.removeEventListener("touchmove", () =>
+        mouseMove(isScheduled, setIsBright)
+      );
     };
   }, []);
 
   return (
     <motion.nav
-      className={`nav__wrapper ${isBright ? "bright" : "dim"}`}
+      className={`nav__wrapper ${isBright || isHovered ? "bright" : "dim"}`}
       ref={nav}
     >
       <ul className="nav-list__wrapper">
-        <div className="nav-list__container">
+        <div
+          className="nav-list__container"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <motion.li
             animate={!isProjectListOpen ? navButton.initial : navButton.animate}
             onClick={() => setIsProjectListOpen(!isProjectListOpen)}
@@ -85,19 +114,33 @@ export default function Nav() {
             initial={{ y: "var(--project-closed)" }}
             animate={
               isProjectListOpen
-                ? { y: "var(--project-open)"}
-                : { y: "var(--project-closed)"  }
+                ? { y: "var(--project-open)" }
+                : { y: "var(--project-closed)" }
             }
             transition={{ ease: "easeOut", duration: 0.5 }}
             className="project__list"
             ref={scope}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <li><Link href={"/"}>By The Sea</Link></li>
-            <li><Link href={"/"}>By The Sea</Link></li>
-            <li><Link href={"/"}>By The Sea</Link></li>
-            <li><Link href={"/"}>By The Sea</Link></li>
-            <li><Link href={"/"}>By The Sea</Link></li>
-            <li><Link href={"/"}>By The Sea</Link></li>
+            <li>
+              <Link href={"/"}>By The Sea</Link>
+            </li>
+            <li>
+              <Link href={"/"}>By The Sea</Link>
+            </li>
+            <li>
+              <Link href={"/"}>By The Sea</Link>
+            </li>
+            <li>
+              <Link href={"/"}>By The Sea</Link>
+            </li>
+            <li>
+              <Link href={"/"}>By The Sea</Link>
+            </li>
+            <li>
+              <Link href={"/"}>By The Sea</Link>
+            </li>
           </motion.ul>
         </div>
         <div className="contact-form__wrapper">
@@ -110,6 +153,8 @@ export default function Nav() {
             }
             transition={{ ease: "easeOut", duration: 0.5 }}
             className="contact-form__container"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             <form>
               <input type="text" placeholder="Your Name" />
