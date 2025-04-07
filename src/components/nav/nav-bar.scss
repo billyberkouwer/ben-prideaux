@@ -1,7 +1,7 @@
 @use "../../styles/_mixins.scss" as *;
 
 .nav-bar__container {
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     left: 0;
@@ -11,6 +11,10 @@
     z-index: 9;
     background-color: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(40);
+
+    &.fixed {
+        position: fixed;
+    }
 
     .menu-button__wrapper {
         display: flex;

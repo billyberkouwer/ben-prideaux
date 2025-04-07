@@ -1,9 +1,11 @@
 import Link from "next/link";
 import "./nav-bar.scss";
 
-export default function NavBar() {
+export default function NavBar({ isFixed }: { isFixed?: boolean }) {
   return (
-    <nav className="nav-bar__container container-fluid">
+    <nav
+      className={`nav-bar__container container-fluid ${isFixed ? "fixed" : ""}`}
+    >
       <div className="row  ">
         <div className="col-4">
           <Link href={"/"}>Ben Prideaux</Link>

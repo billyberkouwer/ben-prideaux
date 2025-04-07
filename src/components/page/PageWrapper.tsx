@@ -1,25 +1,29 @@
 import { ReactNode } from "react";
 import PageThemeConfig from "../theme/PageThemeConfig";
 import NavBar from "../nav/NavBar";
-import "./page-wrapper.scss"
+import "./page-wrapper.scss";
 
 function PageWrapper({
   backgroundCol,
   foregroundCol,
   children,
+  fixedNav,
 }: {
   backgroundCol: string;
   foregroundCol: string;
   children: ReactNode;
+  fixedNav?: boolean;
 }) {
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar isFixed={fixedNav} />
       <PageThemeConfig
         backgroundCol={backgroundCol}
         foregroundCol={foregroundCol}
       />
-      <div className="page__wrapper">{children}</div>
+      <div>
+        {children}
+      </div>
     </>
   );
 }

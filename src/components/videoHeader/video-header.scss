@@ -4,19 +4,27 @@
     height: var(--viewport-height);
     overflow: hidden;
     object-fit: cover;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // pointer-events: none;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
 
     &.is-youtube {
         :first-child {
             position: relative;
-            width: calc(100vw * var(--window-ratio));
-            height: calc(100vw * var(--window-ratio));
+            width: calc(100vh * var(--video-ratio));
+            height: calc(100vh * var(--video-ratio));
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+
+        &.is-wide {
+            :first-child {
+                width: calc(100vw);
+                height: calc(100vw);
+                transform: translate(-50%, -50%);
+            }
         }
     }
 

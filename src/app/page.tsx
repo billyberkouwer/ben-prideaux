@@ -45,6 +45,7 @@ export default function Home() {
     <PageWrapper
       backgroundCol={color.background}
       foregroundCol={color.foreground}
+      fixedNav
     >
       <VideoHeader />
       <ProjectSection listItems={listItems} />
