@@ -10,7 +10,12 @@
     color: $black;
 }
 
-@mixin grid-columns { 
+@mixin backdrop-blur {
+    backdrop-filter: blur(40);
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+@mixin grid-columns {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }

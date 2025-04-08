@@ -7,7 +7,7 @@ export default function ProjectSection({
   listItems: ProjectListItemType[];
 }) {
   return (
-    <section className="project-section__container container  ">
+    <section className="project-section__container container g-3 ">
       <h1 className="section-title">Projects</h1>
       <ProjectList projectItems={listItems} />
     </section>

@@ -2,7 +2,7 @@ import PageWrapper from "@/components/page/PageWrapper";
 import ProjectSection from "@/components/homepage/projectSection/ProjectSection";
 import AboutSection from "@/components/homepage/aboutSection/AboutSection";
 import ContactSection from "@/components/homepage/contactSection/ContactSection";
-import VideoHeader from "@/components/videoHeader/VideoHeader";
+import VideoHeader from "@/components/video/VideoHeader";
 
 const color = {
   background: "white",
@@ -40,6 +40,15 @@ const listItems = [
   },
 ];
 
+const links = [
+  { url: "https://youtu.be/Ks1j-M0300M", ratio: { x: 16, y: 9 } },
+  { url: "https://vimeo.com/347119375?share=copy", ratio: { x: 16, y: 9 } },
+  {
+    url: "https://www.youtube.com/watch?v=8yKZh_z1Md4&ab_channel=BenPrideaux",
+    ratio: { x: 16, y: 9 },
+  },
+];
+
 export default function Home() {
   return (
     <PageWrapper
@@ -47,7 +56,16 @@ export default function Home() {
       foregroundCol={color.foreground}
       fixedNav
     >
-      <VideoHeader />
+      <VideoHeader
+        url={links[0].url}
+        videoRatio={links[0].ratio}
+        id={links[0].url}
+        showControls={false}
+        isClickable={true}
+        isLandingVideo
+        cropYoutubeUI
+        objectFit="cover"
+      />
       <ProjectSection listItems={listItems} />
       <div className="container">
         <div className="row">

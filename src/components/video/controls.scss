@@ -1,0 +1,96 @@
+@import "@/styles/_mixins.scss";
+
+.control_Container {
+    // background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    // opacity: 0;
+    transition: opacity 0.25s;
+    
+    &:hover {
+        opacity: 1;
+    }
+
+    .top_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px 20px;
+    }
+
+    .mid__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .icon__btn {
+        // padding: 0 10px;
+        color: var(--background);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+    }
+
+    .bottom__container {
+        display: flex;
+        border-top: 0.5px var(--background) solid;
+        justify-content: center;
+        align-items: center;
+        height: 34px;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+        gap: 0.5rem;
+
+        @include backdrop-blur;
+    }
+
+    .slider__container {
+        display: flex;
+        align-items: start;
+        flex-grow: 99999;
+        padding: 0 0.5rem;
+        justify-content: center;
+
+        .MuiSlider-root {
+            border-radius: 0;
+            padding: 0.25rem;
+            margin: 0;
+        }
+        // padding: 0 16px;
+    }
+
+    .volume-slider__container {
+        position: absolute;
+        height: 100px;
+        margin-bottom: 20px;
+        bottom: 0;
+    }
+
+    .control__box {
+        width: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    span {
+        color: var(--background);
+        font-size: 0.8rem;
+        margin-left: 10px;
+    }
+
+    .second__control {
+        display: flex;
+        align-items: center;
+    }
+}
