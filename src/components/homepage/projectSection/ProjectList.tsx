@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import ProjectListItem from "./ProjectListItem";
 import { AnimatePresence, motion } from "motion/react";
+import { whileInView } from "@/contants/motion";
 
 const containerAnimations = {
   initial: {
@@ -12,7 +13,6 @@ const containerAnimations = {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      when: "beforeChildren",
     },
   },
   exit: { opacity: 0 },
@@ -44,7 +44,13 @@ export default function ProjectList({
     [projectItems, selectedCategory]
   );
   return (
-    <div className="project-section__container">
+    <motion.div
+      className="project-section__container"
+      variants={whileInView}
+      initial="initial"
+      whileInView="animate"
+      viewport={{once: true}}
+    >
       <div style={{ marginBottom: "2rem" }}>
         <button onClick={() => setIsList(!isList)}>Change view</button>
         <button onClick={() => setSelectedCategory("Editing")}>editing</button>
@@ -78,6 +84,6 @@ export default function ProjectList({
           )}
         </motion.ul>
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

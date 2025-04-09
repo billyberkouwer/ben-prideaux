@@ -5,8 +5,8 @@ import ContactSection from "@/components/homepage/contactSection/ContactSection"
 import VideoHeader from "@/components/video/VideoHeader";
 
 const color = {
-  background: "white",
-  foreground: "black",
+  background: "#FFEEC8",
+  foreground: "#AC512F",
 };
 
 const listItems = [
@@ -57,17 +57,17 @@ export default function Home() {
       fixedNav
     >
       <VideoHeader
-        url={links[0].url}
-        videoRatio={links[0].ratio}
-        id={links[0].url}
-        showControls={false}
+        url={links[2].url}
+        videoRatio={links[2].ratio}
+        id={links[2].url}
+        showControls={true}
         isClickable={true}
         isLandingVideo
         cropYoutubeUI
         objectFit="cover"
       />
       <ProjectSection listItems={listItems} />
-      <div className="container">
+      <div className="container margin-bottom">
         <div className="row">
           <AboutSection />
           <div className="col-2" />

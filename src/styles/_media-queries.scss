@@ -1,3 +1,5 @@
+@use "./_breakpoints.module" as *;
+
 @mixin xs {
     @media (min-width: #{$screen-xs-min}) {
         @content;

@@ -1,9 +1,17 @@
 @use "@/styles/_mixins.scss" as *;
 
-.project-item__container {    
+.project-item__container {
+
     &:hover {
+        a {
+            color: var(--background);
+            background-color: var(--foreground);
+            border-radius: 12px;
+        }
+
         .project-images__wrapper {
             border-radius: 12px;
+
             &.list-view {
                 opacity: 1;
                 visibility: visible;
@@ -12,7 +20,9 @@
     }
 
     a {
+        transition: border-radius 0.5s, color 0.2s, background-color 0.2s;
         display: block;
+        border-bottom: 0.5px solid var(--foreground);
     }
 
     &.margin-bottom {
@@ -42,8 +52,7 @@
     .project-info__container {
         @include grid-columns;
         gap: 0.25rem;
-        border-bottom: 0.5px solid var(--foreground);
-        
+
         .project-title {
             margin: 0;
             font-size: 4rem;
@@ -51,8 +60,8 @@
             line-height: 3.2rem;
             font-weight: 100;
             align-self: flex-end;
-            word-wrap:break-word;
-            grid-column: 1 / 10 ;
+            word-wrap: break-word;
+            grid-column: 1 / 10;
         }
 
         .project-year {
@@ -71,7 +80,7 @@
             text-align: right;
             gap: 0.25rem;
             grid-column: 11 / 13;
-
+            padding: 0 0.25rem;
         }
     }
 }

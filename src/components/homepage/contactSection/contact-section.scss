@@ -1,0 +1,73 @@
+.contact-section__container {
+
+    /* Remove default margin */
+    form,
+    input,
+    textarea {
+        margin: 0;
+        border: none;
+        width: 100%;
+    }
+
+    .input__wrapper {
+        height: 2rem;
+    }
+
+    textarea {
+        height: 5rem;
+    }
+
+    button {
+        background-color: var(--foreground);
+        padding: 0.5rem 1rem;
+        color: var(--background);
+        border: 0.5px solid var(--foreground);
+        transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
+
+        &:hover {
+            color: var(--foreground);
+            background-color: var(--background);
+            border-radius: 10px;
+        }
+    }
+
+    form,
+    input,
+    textarea,
+    button {
+        // font-family: 'Times New Roman', Times, serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+    /* Make sure border-box is used for sizing calculations */
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    /* Remove default padding */
+    input,
+    textarea {
+        padding: 0;
+        background: none;
+        color: inherit;
+        border-bottom: 0.5px solid var(--foreground);
+    }
+
+    /* Style placeholder text to match the rest of your form's typography */
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--foreground);
+        /* Example color, adjust as needed */
+        opacity: 1;
+        /* Firefox fix for placeholder opacity */
+    }
+
+    /* Remove default focus and hover styles if you want a clean look */
+    input:focus,
+    textarea:focus {
+        outline: none;
+    }
+}

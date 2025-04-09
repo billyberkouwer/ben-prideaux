@@ -1,3 +1,5 @@
+
+
 @mixin unstyle-button {
     background-color: transparent;
     border-width: 0;
@@ -7,7 +9,7 @@
     font-weight: inherit;
     line-height: inherit;
     padding: 0;
-    color: $black;
+    cursor: pointer;
 }
 
 @mixin backdrop-blur {

@@ -1,4 +1,6 @@
 @use "../../styles/_mixins.scss" as *;
+@use "../../styles/_variables.module.scss" as *;
+@use "../../styles/_media-queries.scss" as *;
 
 .nav-bar__container {
     position: sticky;
@@ -11,6 +13,12 @@
     z-index: 9;
     background-color: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(40);
+    transition: all 0.5s;
+    text-transform: uppercase;
+
+    &.nav-light {
+        color: var(--background);
+    }
 
     &.fixed {
         position: fixed;
@@ -20,5 +28,24 @@
         display: flex;
         // padding-right: 1rem;
         justify-content: flex-end;
+    }
+
+    .menu-list__container {
+        box-sizing: border-box;
+        padding: 0.5rem;
+        top: 0;
+        position: fixed;
+        width: $nav-width-sm;
+        right: $nav-left-sm;
+
+        @include md {
+            right: $nav-left-md;
+            width: $nav-width-md;
+        }
+
+        @include xl {
+            right: $nav-left-lg;
+            width: $nav-width-lg;
+        }
     }
 }

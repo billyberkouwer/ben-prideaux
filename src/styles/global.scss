@@ -1,5 +1,8 @@
-@use '_helpers.scss';
-@use '_fonts.scss';
+@use './_helpers.scss' as *;
+@use './_fonts.scss' as *;
+@use './_mixins.scss' as *;
+@use './_variables.module.scss' as *;
+@use './_media-queries.scss' as *;
 
 :root {
   --background: #ffffff;
@@ -13,7 +16,6 @@
     --foreground: #ededed;
   }
 }
-
 
 body {
   color: var(--foreground);
@@ -46,4 +48,52 @@ ul {
   text-transform: uppercase;
   line-height: 3.2rem;
   font-weight: 100;
+}
+
+.container {
+  box-sizing: border-box;
+}
+
+button {
+  @include unstyle-button;
+}
+
+.page__wrapper {
+  outline: solid 0.5px var(--foreground);
+  position: relative;
+  overflow-y: scroll;
+  height: 100vh;
+  transition: left 0.5s;
+  left: 0;
+  overflow-x: hidden;
+
+  &.open {
+    left: $nav-left-sm;
+
+    @include md {
+      left: $nav-left-md;
+    }
+
+    @include xl {
+      left: $nav-left-lg;
+    }
+
+    .nav-bar__container {
+      &.fixed {
+        left: $nav-left-sm;
+
+        @include md {
+          left: $nav-left-md;
+        }
+
+        @include xl {
+          left: $nav-left-lg;
+        }
+      }
+    }
+  }
+}
+
+.margin-bottom {
+  margin-bottom: 5rem;
 }

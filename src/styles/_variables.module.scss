@@ -15,3 +15,28 @@ $margin: 4rem;
 $margin-sm: 2rem;
 
 $nav-height: 100px;
+
+$nav-width-vw-sm: 50vw;
+$nav-width-vw-md: 33vw;
+$nav-width-vw-lg: 33vw;
+
+$nav-min-width-sm: 200px;
+$nav-min-width-md: 200px;
+$nav-min-width-lg: 400px;
+
+$nav-width-sm-inv: (-$nav-width-vw-sm);
+$nav-width-md-inv: (-$nav-width-vw-md);
+$nav-width-lg-inv: (-$nav-width-vw-lg);
+
+$nav-min-width-sm-inv: (-$nav-min-width-sm);
+$nav-min-width-md-inv: (-$nav-min-width-md);
+$nav-min-width-lg-inv: (-$nav-min-width-lg);
+
+$nav-left-sm: min($nav-min-width-sm-inv, $nav-width-sm-inv);
+$nav-left-md: min($nav-min-width-md-inv, $nav-width-md-inv);
+$nav-left-lg: min($nav-min-width-lg-inv, $nav-width-lg-inv);
+
+$nav-width-sm: max($nav-width-vw-sm, $nav-min-width-sm);
+$nav-width-md: max($nav-width-vw-md, $nav-min-width-md);
+$nav-width-lg: max($nav-width-vw-lg, $nav-min-width-lg);
+

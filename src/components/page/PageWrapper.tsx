@@ -1,7 +1,10 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, useState } from "react";
 import PageThemeConfig from "../theme/PageThemeConfig";
 import NavBar from "../nav/NavBar";
 import "./page-wrapper.scss";
+import { NavColorContext } from "@/utils/context";
 
 function PageWrapper({
   backgroundCol,
@@ -14,17 +17,19 @@ function PageWrapper({
   children: ReactNode;
   fixedNav?: boolean;
 }) {
+  const [isNavLight, setIsNavLight] = useState(false);
+
   return (
-    <>
-      <NavBar isFixed={fixedNav} />
-      <PageThemeConfig
-        backgroundCol={backgroundCol}
-        foregroundCol={foregroundCol}
-      />
-      <div>
-        {children}
+    <NavColorContext.Provider value={{ isNavLight, setIsNavLight }}>
+      <div className="page__wrapper">
+        <NavBar isFixed={fixedNav} />
+        <PageThemeConfig
+          backgroundCol={backgroundCol}
+          foregroundCol={foregroundCol}
+        />
+        <>{children}</>
       </div>
-    </>
+    </NavColorContext.Provider>
   );
 }
 

@@ -1,6 +1,15 @@
+"use client"
+
+import { whileInView } from "@/contants/motion";
+import { motion } from "motion/react";
+
 function AboutSection() {
   return (
-    <section
+    <motion.section
+      initial="initial"
+      whileInView="animate"
+      variants={whileInView}
+      viewport={{ once: true }}
       className="about-section__container col-lg-6"
     >
       <h2 className="section-title">About</h2>
@@ -11,13 +20,15 @@ function AboutSection() {
         error! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
         dolor at placeat! Cum suscipit placeat quaerat consequatur aliquam
         nesciunt aperiam, excepturi similique delectus sunt, perspiciatis ut!
-        Illo eos ullam nihil! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam
-        voluptatem, quibusdam, fugiat, laborum, esse, accusamus, doloremque,
-        placeat, sunt, explicabo, nesciunt, autem! Velit, consequatur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolor at placeat! Cum suscipit placeat quaerat consequatur aliquam
-        nesciunt aperiam, excepturi similique delectus sunt, perspiciatis ut!
-
+        Illo eos ullam nihil! Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Quisquam voluptatem, quibusdam, fugiat, laborum, esse,
+        accusamus, doloremque, placeat, sunt, explicabo, nesciunt, autem! Velit,
+        consequatur! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Dolorem dolor at placeat! Cum suscipit placeat quaerat consequatur
+        aliquam nesciunt aperiam, excepturi similique delectus sunt,
+        perspiciatis ut!
       </p>
-    </section>
+    </motion.section>
   );
 }
 
