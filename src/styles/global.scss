@@ -59,13 +59,12 @@ button {
 }
 
 .page__wrapper {
-  outline: solid 0.5px var(--foreground);
+  box-shadow: 1px 0 0 0px var(--foreground);
   position: relative;
-  overflow-y: scroll;
-  height: 100vh;
+  // overflow-y: scroll;
+  // height: 100vh;
   transition: left 0.5s;
   left: 0;
-  overflow-x: hidden;
 
   &.open {
     left: $nav-left-sm;
