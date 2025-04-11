@@ -1,0 +1,17 @@
+footer {
+    position: relative;
+}
+
+.social-links__container {
+    display: flex;
+    gap: 0.5rem;
+    .icon__container {
+        position: relative;
+
+        &:hover {
+            svg {
+                stroke-width: 3px;
+            }
+        }
+    }
+}

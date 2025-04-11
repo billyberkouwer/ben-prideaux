@@ -36,6 +36,7 @@
         overflow: hidden;
         border-radius: 5px;
         transition: border-radius 0.5s;
+        background-color: var(--background);
 
         &.list-view {
             top: 0;
@@ -55,9 +56,10 @@
 
         .project-title {
             margin: 0;
-            font-size: 4rem;
+            font-size: 3rem;
+            line-height: 2.5rem;
+            padding-top: 0.2rem;
             text-transform: uppercase;
-            line-height: 3.2rem;
             font-weight: 100;
             align-self: flex-end;
             word-wrap: break-word;

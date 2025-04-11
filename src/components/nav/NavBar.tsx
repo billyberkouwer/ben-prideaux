@@ -3,7 +3,7 @@
 import Link from "next/link";
 import "./nav-bar.scss";
 import MenuButton from "./MenuButton";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { NavColorContext } from "@/utils/context";
 
 export default function NavBar({ isFixed }: { isFixed?: boolean }) {

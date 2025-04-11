@@ -11,7 +11,7 @@ function ContactSection() {
       whileInView="animate"
       variants={whileInView}
       viewport={{ once: true }}
-      className="contact-section__container container col-lg-4"
+      className="contact-section__container container col-6"
     >
       <h2 className="section-title">Contact</h2>
       <div className="contact-text__container row g-0">
@@ -22,7 +22,7 @@ function ContactSection() {
           nulla architecto molestiae explicabo eius? Blanditiis, asperiores?
         </p>
       </div>
-      <form className="row g-0">
+      <form className="row g-0 gy-3">
         <div className="col-12 input__wrapper">
           <input type="text" placeholder="Name" required />
         </div>

@@ -1,0 +1,15 @@
+.cursor__wrapper {
+    position: fixed;
+    transform: translate(-0.4rem, -0.8rem);
+    pointer-events: none;
+    z-index: 9999;
+    visibility: hidden;
+
+    @media (pointer: fine) {
+        visibility: visible;
+
+        &.hidden {
+            visibility: hidden;
+        }
+    }
+}

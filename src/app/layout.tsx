@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant, Geist, Geist_Mono } from "next/font/google";
 import "@/styles/global.scss";
 import "@/styles/bootstrap/bootstrap-grid.scss";
+import Cursor from "@/components/cursor/Cursor";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const GNU = localFont({
+  src: "./fonts/GNUGrotesk-VF.ttf",
+  variable: "--font-gnu",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +29,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${cormorant.variable} ${GNU.variable}`}>
+        <Cursor />
         {children}
       </body>
     </html>

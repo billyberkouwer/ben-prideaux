@@ -19,7 +19,7 @@ export default function MenuButton() {
     }
   }, [isMenuOpen]);
   return (
-    <span className="menu-button__wrapper col-4">
+    <span className="menu-button__wrapper col-1 offset-3">
       <button onClick={() => setIsMenuOpen(!isMenuOpen)}>Menu</button>
     </span>
   );

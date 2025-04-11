@@ -1,0 +1,7 @@
+.my-custom-svgs {
+    fill: var(--foreground);
+    stroke: var(--foreground);
+    stroke-width: 1.5px;
+    overflow: visible;
+    transition: stroke-width 0.2s;
+}

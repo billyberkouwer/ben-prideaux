@@ -137,26 +137,6 @@ function VideoHeader({
     };
   }, []);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case " ":
-          playPauseHandler();
-          event.preventDefault();
-          break;
-        case "f":
-          toggleFullscreen();
-          break;
-        default:
-          break;
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [playPauseHandler, toggleFullscreen]);
-
-
-  console.log(navColorCtx)
   return (
     <motion.div
       initial={{ opacity: 0 }}

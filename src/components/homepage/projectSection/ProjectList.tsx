@@ -20,13 +20,11 @@ const containerAnimations = {
 
 export default function ProjectList({
   projectItems,
+  isList,
+  selectedCategory
 }: {
   projectItems: ProjectListItemType[];
 }) {
-  const [isList, setIsList] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<
-    string | null | undefined
-  >(undefined);
   const activeProjects = useMemo(
     () =>
       selectedCategory === undefined || selectedCategory === null
@@ -43,24 +41,19 @@ export default function ProjectList({
           }),
     [projectItems, selectedCategory]
   );
+
+  console.log(selectedCategory)
   return (
     <motion.div
       className="project-section__container"
       variants={whileInView}
       initial="initial"
       whileInView="animate"
-      viewport={{once: true}}
+      viewport={{ once: true }}
     >
-      <div style={{ marginBottom: "2rem" }}>
-        <button onClick={() => setIsList(!isList)}>Change view</button>
-        <button onClick={() => setSelectedCategory("Editing")}>editing</button>
-        <button onClick={() => setSelectedCategory("camera")}>camera</button>
-        <button onClick={() => setSelectedCategory(null)}>All</button>
-      </div>
       <AnimatePresence mode="wait">
         <motion.ul
           key={isList ? "list-container" : "block-container"}
-          layout="preserve-aspect"
           initial="initial"
           animate="animate"
           exit="exit"

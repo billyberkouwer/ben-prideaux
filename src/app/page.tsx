@@ -5,8 +5,8 @@ import ContactSection from "@/components/homepage/contactSection/ContactSection"
 import VideoHeader from "@/components/video/VideoHeader";
 
 const color = {
-  background: "#FFEEC8",
-  foreground: "#AC512F",
+  background: "black",
+  foreground: "white",
 };
 
 const listItems = [
@@ -47,6 +47,10 @@ const links = [
     url: "https://www.youtube.com/watch?v=8yKZh_z1Md4&ab_channel=BenPrideaux",
     ratio: { x: 16, y: 9 },
   },
+  {
+    url: "https://vimeo.com/944547199/d9c2b6f1b2?share=copy",
+    ratio: { x: 4, y: 3 },
+  },
 ];
 
 export default function Home() {
@@ -56,21 +60,22 @@ export default function Home() {
       foregroundCol={color.foreground}
       fixedNav
     >
+      {/* <div className="container video-header__wrapper g-3"> */}
       <VideoHeader
-        url={links[2].url}
-        videoRatio={links[2].ratio}
-        id={links[2].url}
-        showControls={true}
-        isClickable={true}
+        url={links[3].url}
+        videoRatio={links[3].ratio}
+        id={links[3].url}
+        showControls={false}
+        isClickable={false}
         isLandingVideo
-        cropYoutubeUI
+        // cropYoutubeUI
         objectFit="cover"
       />
+      {/* </div> */}
       <ProjectSection listItems={listItems} />
       <div className="container margin-bottom">
         <div className="row">
           <AboutSection />
-          <div className="col-2" />
           <ContactSection />
         </div>
       </div>

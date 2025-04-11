@@ -5,6 +5,8 @@ import PageThemeConfig from "../theme/PageThemeConfig";
 import NavBar from "../nav/NavBar";
 import "./page-wrapper.scss";
 import { NavColorContext } from "@/utils/context";
+import SmoothScroll from "../smoothScroll/SmoothScroll";
+import Footer from "../footer/Footer";
 
 function PageWrapper({
   backgroundCol,
@@ -21,14 +23,17 @@ function PageWrapper({
 
   return (
     <NavColorContext.Provider value={{ isNavLight, setIsNavLight }}>
-      <div className="page__wrapper">
-        <NavBar isFixed={fixedNav} />
-        <PageThemeConfig
-          backgroundCol={backgroundCol}
-          foregroundCol={foregroundCol}
-        />
-        <>{children}</>
-      </div>
+      {/* <SmoothScroll> */}
+        <div className="page__wrapper">
+          <NavBar isFixed={fixedNav} />
+          <PageThemeConfig
+            backgroundCol={backgroundCol}
+            foregroundCol={foregroundCol}
+          />
+          <>{children}</>
+          <Footer />
+        </div>
+      {/* </SmoothScroll> */}
     </NavColorContext.Provider>
   );
 }

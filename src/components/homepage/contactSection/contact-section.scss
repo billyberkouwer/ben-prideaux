@@ -1,5 +1,5 @@
 .contact-section__container {
-
+    
     /* Remove default margin */
     form,
     input,
@@ -7,6 +7,8 @@
         margin: 0;
         border: none;
         width: 100%;
+        font-family: var(--font-gnu);
+        white-space: pre;
     }
 
     .input__wrapper {
@@ -23,17 +25,17 @@
         color: var(--background);
         border: 0.5px solid var(--foreground);
         transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
+        border-radius: 2px;
 
         &:hover {
             color: var(--foreground);
             background-color: var(--background);
-            border-radius: 10px;
+            border-radius: 5px;
         }
     }
 
     form,
     input,
-    textarea,
     button {
         // font-family: 'Times New Roman', Times, serif;
         font-size: 1rem;
@@ -54,6 +56,13 @@
         background: none;
         color: inherit;
         border-bottom: 0.5px solid var(--foreground);
+    }
+
+    textarea {
+        font-family: var(--font-cormorant);
+        text-transform: none;
+        font-size: 1.2rem;
+        font-weight: 500;
     }
 
     /* Style placeholder text to match the rest of your form's typography */

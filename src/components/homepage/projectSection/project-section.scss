@@ -1,3 +1,20 @@
 .project-section__container {
     box-sizing: border-box;
 }
+
+fieldset {
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+    input {
+        margin: 0;
+        margin-right: 0.1rem;
+        accent-color: var(--foreground);
+    }
+
+    label {
+        margin-right: 0.5rem;
+        text-transform: uppercase;
+    }
+}

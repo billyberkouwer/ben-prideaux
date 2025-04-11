@@ -1,8 +1,18 @@
+.video-header__wrapper {
+    height: calc(var(--viewport-height) - 36px);
+    margin-top: 36px;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
 .video-header__container {
     width: 100%;
     height: auto;
     aspect-ratio: var(--video-aspect-ratio);
     position: relative;
+    box-sizing: border-box;
+    // border-radius: 5px;
+
 
     &.landing-video {
         top: 0;
