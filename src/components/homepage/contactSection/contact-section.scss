@@ -21,7 +21,7 @@
 
     button {
         background-color: var(--foreground);
-        padding: 0.5rem 1rem;
+        padding: 0.25rem 0.5rem;
         color: var(--background);
         border: 0.5px solid var(--foreground);
         transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
@@ -54,12 +54,9 @@
     textarea {
         padding: 0;
         background: none;
+        font-family: var(--font-cormorant);
         color: inherit;
         border-bottom: 0.5px solid var(--foreground);
-    }
-
-    textarea {
-        font-family: var(--font-cormorant);
         text-transform: none;
         font-size: 1.2rem;
         font-weight: 500;

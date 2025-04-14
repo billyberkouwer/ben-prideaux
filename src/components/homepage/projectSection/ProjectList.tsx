@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import ProjectListItem from "./ProjectListItem";
 import { AnimatePresence, motion } from "motion/react";
 import { whileInView } from "@/contants/motion";
@@ -24,6 +24,8 @@ export default function ProjectList({
   selectedCategory
 }: {
   projectItems: ProjectListItemType[];
+  isList: boolean;
+  selectedCategory: string | null | undefined;
 }) {
   const activeProjects = useMemo(
     () =>
@@ -42,7 +44,6 @@ export default function ProjectList({
     [projectItems, selectedCategory]
   );
 
-  console.log(selectedCategory)
   return (
     <motion.div
       className="project-section__container"
@@ -66,12 +67,14 @@ export default function ProjectList({
                 key={"list-item-project-" + "is-list" + projectItem.title + i}
                 isList={true}
                 {...projectItem}
+                selectedCategory={selectedCategory}
               />
             ) : (
               <ProjectListItem
                 key={"list-item-project-" + "is-block" + projectItem.title + i}
                 isList={false}
                 {...projectItem}
+                selectedCategory={selectedCategory}
               />
             )
           )}

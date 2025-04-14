@@ -14,8 +14,9 @@ function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isMouseVisible, setIsMouseVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [hoverElements, setHoverElements] = useState<HTMLElement[]>([]);
-  const [lottieJson, setLottieJson] = useState<Data | null>(null);
+  const [lottieJson, setLottieJson] = useState<Data | null>(cursorJson);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function Cursor() {
     const strokeColor: number[] | undefined =
       lottie.layers[0].shapes[0].it[1].c?.k;
 
-    const styleObserver = new MutationObserver(() => {
+    function setLottieColor() {
       if (fillColor) {
         const foregroundCol = window
           .getComputedStyle(document.documentElement)
@@ -56,7 +57,11 @@ function Cursor() {
         strokeColor[2] = bgColFactored.blue;
       }
       setLottieJson({ ...lottie });
-    });
+    }
+
+    setLottieColor();
+
+    const styleObserver = new MutationObserver(setLottieColor);
 
     styleObserver.observe(document.documentElement, {
       attributes: true,
@@ -112,8 +117,17 @@ function Cursor() {
       const buttons = document.querySelectorAll("button");
       const inputs = document.querySelectorAll("input");
       const textareas = document.querySelectorAll("textarea");
-      console.log("mutation");
-      setHoverElements([...links, ...buttons, ...inputs, ...textareas]);
+      const declarations = document.querySelectorAll(
+        ".change-cursor"
+      ) as NodeListOf<HTMLElement>;
+
+      setHoverElements([
+        ...links,
+        ...buttons,
+        ...inputs,
+        ...textareas,
+        ...declarations,
+      ]);
     });
 
     domElObserver.observe(document.body, {
@@ -138,8 +152,8 @@ function Cursor() {
   }, [hoverElements]);
 
   useEffect(() => {
-    console.log(lottieJson);
-  }, [lottieJson]);
+    setIsPlaying(true);
+  }, [isHovered]);
 
   if (lottieJson) {
     return (
@@ -151,9 +165,11 @@ function Cursor() {
           mode={isHovered ? "forward" : "reverse"}
           autoplay
           lottieJson={lottieJson}
-          isPlaying={isHovered}
+          play={isPlaying}
           width="2rem"
           height="2rem"
+          onEnded={() => setIsPlaying(false)}
+          speed={6}
         />
       </div>
     );

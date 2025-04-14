@@ -26,6 +26,14 @@
         pointer-events: none;
     }
 
+    &.crop-youtube-ui {
+        overflow: hidden;
+
+        iframe {
+            transform: scale(1.175);
+        }
+    }
+
     &.cover-fit {
         position: relative;
         overflow: hidden;
@@ -47,6 +55,8 @@
             }
         }
     }
+
+
 
     // &.is-youtube {
     //     :first-child {

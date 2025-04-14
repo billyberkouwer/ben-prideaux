@@ -40,7 +40,7 @@ const listItems = [
   },
 ];
 
-const links = [
+export const videoLinks = [
   { url: "https://youtu.be/Ks1j-M0300M", ratio: { x: 16, y: 9 } },
   { url: "https://vimeo.com/347119375?share=copy", ratio: { x: 16, y: 9 } },
   {
@@ -62,9 +62,9 @@ export default function Home() {
     >
       {/* <div className="container video-header__wrapper g-3"> */}
       <VideoHeader
-        url={links[3].url}
-        videoRatio={links[3].ratio}
-        id={links[3].url}
+        url={videoLinks[3].url}
+        videoRatio={videoLinks[3].ratio}
+        id={videoLinks[3].url}
         showControls={false}
         isClickable={false}
         isLandingVideo

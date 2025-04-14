@@ -1,47 +1,76 @@
 "use client";
 
-import { Data, DotLottie, DotLottieReact, Mode } from "@lottiefiles/dotlottie-react";
+import {
+  Data,
+  DotLottie,
+  DotLottieReact,
+  Mode,
+} from "@lottiefiles/dotlottie-react";
 import { useEffect, useState } from "react";
 
 function LottieLoader({
   width,
   height,
-  isPlaying,
-  mode,
+  speed = 1,
+  play = true,
+  mode = "forward",
   lottieJson,
   loop,
-  autoplay,
+  autoplay = false,
+  setFrame,
+  onEnded,
 }: {
   width: number | string;
   height: number | string;
-  isPlaying: boolean;
-  mode: Mode;
-  lottieJson: Data;
+  lottieJson: Data | null;
+  speed?: number;
+  play?: boolean;
+  mode?: Mode;
   loop?: boolean;
-  autoplay: boolean;
+  autoplay?: boolean;
+  setFrame?: (lottie: DotLottie) => void;
+  onEnded: () => void;
 }) {
   const [lottie, setLottie] = useState<DotLottie>();
-
   const lottieRefCallback = (dotLottie: DotLottie) => {
     setLottie(dotLottie);
   };
 
   useEffect(() => {
-    if (lottie) {
+    if (onEnded && lottie) {
+      lottie?.addEventListener("complete", onEnded);
+    }
+
+    return () => {
+      lottie?.removeEventListener("complete", onEnded);
+    };
+  }, [lottie, onEnded]);
+
+  useEffect(() => {
+    if (lottie && play) {
       lottie.play();
     }
-  }, [isPlaying, lottie]);
+  }, [play, lottie]);
+
+  useEffect(() => {
+    if (lottie && setFrame) {
+      setFrame(lottie);
+    }
+  }, [lottie, setFrame]);
 
   return (
     <div style={{ width: width, height: height }}>
-      <DotLottieReact
-        dotLottieRefCallback={lottieRefCallback}
-        data={lottieJson}
-        autoplay={autoplay}
-        loop={loop}
-        mode={mode}
-        speed={6}
-      />
+      {lottieJson ? (
+        <DotLottieReact
+          dotLottieRefCallback={lottieRefCallback}
+          data={lottieJson}
+          autoplay={autoplay}
+          loop={loop}
+          mode={mode}
+          speed={speed}
+          onEnded={onEnded}
+        />
+      ) : null}
     </div>
   );
 }

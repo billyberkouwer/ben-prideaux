@@ -31,6 +31,10 @@
         display: flex;
         // padding-right: 1rem;
         justify-content: flex-end;
+        button {
+            color: var(--foreground);
+
+        }
     }
 
     .menu-list__container {

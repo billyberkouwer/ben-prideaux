@@ -8,6 +8,7 @@ type ProjectListItemType = {
 
 type ProjectListItemProps = ProjectListItemType & {
   isList: boolean;
+  selectedCategory: string | null | undefined;
 };
 
 type VideoStateType = {

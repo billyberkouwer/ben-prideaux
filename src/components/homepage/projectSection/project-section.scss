@@ -11,6 +11,17 @@ fieldset {
         margin: 0;
         margin-right: 0.1rem;
         accent-color: var(--foreground);
+        background-color: var(--background);
+        border: 1px solid var(--foreground);
+        border-radius: 10px;
+        appearance: none;
+        width: 0.75rem;
+        height: 0.75rem;
+
+        &:checked {
+            // accent-color: var(--background);
+            background-color: var(--foreground);
+        }
     }
 
     label {

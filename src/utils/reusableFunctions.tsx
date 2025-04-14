@@ -12,7 +12,6 @@ export function parseRGBStringToNumbers(rgbString: string) {
   // Remove the 'rgb(' and ')' from the string
   const rgbValues = rgbString.match(/\d+/g)?.map(Number);
 
-  console.log(rgbString);
   if (rgbValues) {
     // Normalize each value to a range of 0-1
     const red = rgbValues[0] / 255;

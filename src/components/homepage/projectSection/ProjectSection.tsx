@@ -35,7 +35,7 @@ export default function ProjectSection({
               name="role"
               onClick={(e) => setSelectedCategory(e.target.value)}
             />
-            <label htmlFor="Editing">Editing</label>
+            <label className="change-cursor" htmlFor="Editing">Editing</label>
             <input
               id={"Camera"}
               type="radio"
@@ -43,7 +43,7 @@ export default function ProjectSection({
               name="role"
               onClick={(e) => setSelectedCategory(e.target.value)}
             />
-            <label htmlFor="Camera">Camera</label>
+            <label className="change-cursor" htmlFor="Camera">Camera</label>
             <input
               id="Grade"
               type="radio"
@@ -51,7 +51,7 @@ export default function ProjectSection({
               name="role"
               onClick={(e) => setSelectedCategory(e.target.value)}
             />
-            <label htmlFor="Grade">Grade</label>
+            <label className="change-cursor" htmlFor="Grade">Grade</label>
             <input
               id="All"
               type="radio"
@@ -59,7 +59,7 @@ export default function ProjectSection({
               name="role"
               onClick={(e) => setSelectedCategory(null)}
             />
-            <label htmlFor="All">All</label>
+            <label className="change-cursor" htmlFor="All">All</label>
           </fieldset>
         </div>
       </div>

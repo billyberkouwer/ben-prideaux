@@ -1,8 +1,9 @@
 import PageWrapper from "@/components/page/PageWrapper";
+import ProjectRow from "@/components/project-page/projectRow/ProjectRow";
 
 const color = {
-  background: "black",
-  foreground: "white",
+  background: "beige",
+  foreground: "red",
 };
 
 function Page() {
@@ -11,7 +12,13 @@ function Page() {
       backgroundCol={color.background}
       foregroundCol={color.foreground}
     >
-      <h1>This is a new page</h1>
+      <div className="container">
+        <div className="row">
+        <h1>This is a new page</h1>
+
+        </div>
+        <ProjectRow />
+      </div>
     </PageWrapper>
   );
 }
