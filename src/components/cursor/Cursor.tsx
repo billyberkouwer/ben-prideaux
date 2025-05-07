@@ -14,7 +14,6 @@ function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isMouseVisible, setIsMouseVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [hoverElements, setHoverElements] = useState<HTMLElement[]>([]);
   const [lottieJson, setLottieJson] = useState<Data | null>(cursorJson);
   const pathname = usePathname();
@@ -142,18 +141,14 @@ function Cursor() {
 
   useEffect(() => {
     hoverElements.forEach((el) => {
-      el.onmouseenter = () => {
+      el.onpointerenter = () => {
         setIsHovered(true);
       };
-      el.onmouseleave = () => {
+      el.onpointerleave = () => {
         setIsHovered(false);
       };
     });
   }, [hoverElements]);
-
-  useEffect(() => {
-    setIsPlaying(true);
-  }, [isHovered]);
 
   if (lottieJson) {
     return (
@@ -164,11 +159,10 @@ function Cursor() {
         <LottieLoader
           mode={isHovered ? "forward" : "reverse"}
           autoplay
+          play={isHovered ? "forward" : "reverse"}
           lottieJson={lottieJson}
-          play={isPlaying}
           width="2rem"
           height="2rem"
-          onEnded={() => setIsPlaying(false)}
           speed={6}
         />
       </div>

@@ -15,7 +15,7 @@ function LottieLoader({
   play = true,
   mode = "forward",
   lottieJson,
-  loop,
+  loop = false,
   autoplay = false,
   setFrame,
   onEnded,
@@ -24,12 +24,12 @@ function LottieLoader({
   height: number | string;
   lottieJson: Data | null;
   speed?: number;
-  play?: boolean;
+  play?: boolean | string;
   mode?: Mode;
   loop?: boolean;
   autoplay?: boolean;
   setFrame?: (lottie: DotLottie) => void;
-  onEnded: () => void;
+  onEnded?: () => void;
 }) {
   const [lottie, setLottie] = useState<DotLottie>();
   const lottieRefCallback = (dotLottie: DotLottie) => {

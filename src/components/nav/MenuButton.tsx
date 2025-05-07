@@ -79,9 +79,7 @@ export default function MenuButton() {
   }, []);
 
   const setFrame = useCallback((lottie: DotLottie) => {
-      lottie.setFrame(0);
-      console.log("frame", 0);
-    
+      lottie.setFrame(0);    
   }, []);
 
   return (
@@ -93,7 +91,7 @@ export default function MenuButton() {
         }}
       >
         <LottieLoader
-          // autoplay
+          autoplay
           width={20}
           height={20}
           speed={4}
