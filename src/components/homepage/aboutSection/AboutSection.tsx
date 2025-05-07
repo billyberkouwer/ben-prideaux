@@ -2,6 +2,7 @@
 
 import { whileInView } from "@/contants/motion";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 function AboutSection() {
   return (
@@ -28,6 +29,7 @@ function AboutSection() {
         aliquam nesciunt aperiam, excepturi similique delectus sunt,
         perspiciatis ut!
       </p>
+      <Image src={"/images/ben-picture.jpg"} width={400} height={400} alt="about-picture" />
     </motion.section>
   );
 }
