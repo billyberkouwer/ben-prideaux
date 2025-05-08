@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import { whileInView } from "@/contants/motion";
 import { motion } from "motion/react";
 import Image from "next/image";
+import "./about-section.scss"
 
 function AboutSection() {
   return (
@@ -29,7 +30,14 @@ function AboutSection() {
         aliquam nesciunt aperiam, excepturi similique delectus sunt,
         perspiciatis ut!
       </p>
-      <Image src={"/images/ben-picture.jpg"} width={400} height={400} alt="about-picture" />
+      <div className="about-images__container">
+        <Image
+          src={"/images/ben-picture.jpg"}
+          alt="about-picture"
+          fill
+          sizes="400px"
+        />
+      </div>
     </motion.section>
   );
 }

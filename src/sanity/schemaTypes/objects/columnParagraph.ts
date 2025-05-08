@@ -41,7 +41,7 @@ export const columnParagraph = defineType({
         subtitle:
           "Columns occupied: " +
           (parseInt(width) + parseInt(offset)) +
-          (text ? ". " + text : ""),
+          (text ? ". " + text + "..." : ""),
       };
     },
   },

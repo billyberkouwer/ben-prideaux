@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant, Geist, Geist_Mono } from "next/font/google";
 import "@/styles/global.scss";
 import "@/styles/bootstrap/bootstrap-grid.scss";
-import Cursor from "@/components/cursor/Cursor";
 import localFont from "next/font/local";
 
 const GNU = localFont({
@@ -30,7 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${GNU.variable}`}>
-        <Cursor />
         {children}
       </body>
     </html>
