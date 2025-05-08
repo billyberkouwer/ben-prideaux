@@ -15,16 +15,14 @@ export default function ProjectImage({
   yAlignment?: "bottom" | "middle" | "top" | undefined;
 }) {
   return (
-    <ProjectColumn size={size} offset={offset} yAlignment={yAlignment}>
-      <div
-        style={{
-          position: "relative",
-          aspectRatio: "16/9",
-          objectFit: "contain",
-        }}
-      >
-        <Image src={src} fill sizes="500px" alt="alt" />
-      </div>
-    </ProjectColumn>
+    <div
+      style={{
+        position: "relative",
+        aspectRatio: "16/9",
+        objectFit: "contain",
+      }}
+    >
+      <Image src={src} fill sizes="500px" alt="alt" />
+    </div>
   );
 }

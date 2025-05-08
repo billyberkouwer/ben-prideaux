@@ -4,6 +4,7 @@ import ProjectRow from "@/components/project-page/projectRow/ProjectRow";
 import VideoHeader from "@/components/video/VideoHeader";
 import { videoLinks } from "../page";
 import ProjectImage from "@/components/project-page/projectImage/ProjectImage";
+import "./page.scss";
 
 const color = {
   background: "beige",
@@ -27,12 +28,14 @@ function Page() {
         // cropYoutubeUI
         objectFit="cover"
       />
-      <div className="container g-3">
+      <div className="container g-3 project-content__container">
         <ProjectRow>
-          <h1>This is a new page</h1>
+          <ProjectColumn size="12">
+            <h1>This is a new page</h1>
+          </ProjectColumn>
         </ProjectRow>
         <ProjectRow>
-          <ProjectColumn offset="large">
+          <ProjectColumn size="6" offset="1">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Deserunt, odio harum nobis tenetur error reiciendis distinctio
@@ -42,17 +45,23 @@ function Page() {
           </ProjectColumn>
         </ProjectRow>
         <ProjectRow>
-          <ProjectImage size="small" offset="large" yAlignment="middle" />
-          <ProjectImage size="small" offset="small" />
+          <ProjectColumn size="3"  yAlignment="align-self-end">
+            <ProjectImage />
+          </ProjectColumn>
+          <ProjectColumn size="6">
+            <ProjectImage />
+          </ProjectColumn>
+          <ProjectColumn size="3" yAlignment="bottom">
+            <ProjectImage />
+          </ProjectColumn>
         </ProjectRow>
         <ProjectRow>
-          <ProjectImage size="medium" />
+          <ProjectColumn size="6">
+            <ProjectImage />
+          </ProjectColumn>
         </ProjectRow>
         <ProjectRow>
-          <ProjectImage size="medium" />
-        </ProjectRow>
-        <ProjectRow>
-          <ProjectColumn offset="large">
+          <ProjectColumn size="6">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Deserunt, odio harum nobis tenetur error reiciendis distinctio
@@ -60,7 +69,7 @@ function Page() {
               dolores quisquam dicta ducimus. Saepe!
             </p>
           </ProjectColumn>
-          <ProjectColumn size="medium">
+          <ProjectColumn size="4">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Deserunt, odio harum nobis tenetur error reiciendis distinctio
@@ -68,7 +77,9 @@ function Page() {
               dolores quisquam dicta ducimus. Saepe!
             </p>
           </ProjectColumn>
-          <ProjectColumn size="medium" offset="medium">
+        </ProjectRow>
+        <ProjectRow>
+          <ProjectColumn size="6" offset="medium">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Deserunt, odio harum nobis tenetur error reiciendis distinctio
@@ -76,7 +87,7 @@ function Page() {
               dolores quisquam dicta ducimus. Saepe!
             </p>
           </ProjectColumn>
-          <ProjectColumn offset="small">
+          <ProjectColumn size="2">
             <VideoHeader
               id={videoLinks[2].url + "project"}
               url={videoLinks[2].url}

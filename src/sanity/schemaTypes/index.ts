@@ -10,7 +10,9 @@ import { columnWidth } from "./objects/columnWidth";
 import { columnOffset } from "./objects/columnOffset";
 import { columnParagraph } from "./objects/columnParagraph";
 import { aspectRatio } from "./objects/aspectRatio";
+import { columnVerticalAlignment } from "./objects/columnVerticalAlignment";
+import { videoHeader } from "./objects/videoHeader";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [page, home, roles, columnImage, columnWidth, columnOffset, columnVideo, columnParagraph, pageBuilder, row, aspectRatio],
+  types: [page, home, roles, columnImage, columnWidth, columnOffset, columnVideo, columnParagraph, columnVerticalAlignment, videoHeader, pageBuilder, row, aspectRatio],
 };

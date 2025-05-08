@@ -24,6 +24,11 @@ export const columnImage = defineType({
       title: "Image Offset",
       description: "Offset of the image in columns. To ensure a smooth flow of page content, the width + offset should not exceed 12 columns."
     }),
+    defineField({
+      type: "columnVerticalAlignment",
+      name: "columnVerticalAlignment",
+      title: "Vertical Alignment",
+    }),
   ],
   preview: {
     select: {

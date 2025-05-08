@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
 import { whileInView } from "@/contants/motion";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 
 function ProjectColumn({
-  size = "medium",
-  offset = undefined,
-  yAlignment = undefined,
+  size = "1",
+  offset = "0",
+  yAlignment = "align-self-start",
   children,
 }: {
-  size?: "small" | "medium" | "large" | "auto" | undefined;
-  offset?: "small" | "medium" | "large" | "auto" | undefined;
-  yAlignment?: "bottom" | "middle" | "top" | undefined;
+  size?: string;
+  offset?: string;
+  yAlignment?: "align-self-start" | "align-self-center" | "align-self-end" | undefined;
   children: ReactNode;
 }) {
   return (
@@ -21,7 +21,7 @@ function ProjectColumn({
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.3 }}
-      className={`project-image__wrapper ${size === "medium" ? "col-6" : ""} ${size === "small" ? "col-3" : ""} ${size === "auto" ? "col" : ""} ${offset === "small" ? "offset-1" : ""} ${offset === "medium" ? "offset-2" : ""} ${offset === "large" ? "offset-3" : ""} ${yAlignment === "bottom" ? "align-self-end" : ""} ${yAlignment === "middle" ? "align-self-center" : ""} ${yAlignment === "top" ? "align-self-start" : ""}`}
+      className={`pt-2 col-lg-${size} col-sm-${parseInt(size) * 2} offset-lg-${offset} ${yAlignment}`}
     >
       {children}
     </motion.div>

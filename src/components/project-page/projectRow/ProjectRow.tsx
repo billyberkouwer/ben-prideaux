@@ -5,5 +5,5 @@ import ProjectColumn from "../projectColumn/ProjectColumn";
 import { ReactNode } from "react";
 
 export default function ProjectRow({ children }: { children: ReactNode }) {
-  return <div className="project-row__container row py-1">{children}</div>;
+  return <div className="project-row__container row gx-2">{children}</div>;
 }

@@ -1,1 +1,1 @@
-export const listOptions: { title: string; value: string }[] = Array(12).fill("").map((el, i) => ({ title: i + 1 + " column" + (i > 0 ? "s" : ""), value: `${i + 1}` }));
+export const listOptions: { title: string; value: number }[] = Array(12).fill("").map((el, i) => ({ title: i + 1 + " column" + (i > 0 ? "s" : ""), value: i + 1 }));

@@ -60,7 +60,6 @@ export default function Home() {
       foregroundCol={color.foreground}
       fixedNav
     >
-      {/* <div className="container video-header__wrapper g-3"> */}
       <VideoHeader
         url={videoLinks[3].url}
         videoRatio={videoLinks[3].ratio}
@@ -71,7 +70,6 @@ export default function Home() {
         // cropYoutubeUI
         objectFit="cover"
       />
-      {/* </div> */}
       <ProjectSection listItems={listItems} />
       <div className="container margin-bottom">
         <div className="row">

@@ -21,7 +21,8 @@ export const page = defineType({
       name: "role",
       type: "array",
       title: "Roles",
-      description: "List your roles in the project. Search for an existing role - if it doesn't exist, create a new one.",
+      description:
+        "List your roles in the project. Search for an existing role - if it doesn't exist, create a new one.",
       of: [
         {
           type: "reference",
@@ -30,9 +31,21 @@ export const page = defineType({
       ],
     }),
     defineField({
+      type: "boolean",
+      title: "Enable project video header?",
+      name: "enableVideoHeader",
+      initialValue: false,
+    }),
+    defineField({
+      type: "videoHeader",
+      name: "videoHeader",
+      title: "Video Header",
+      hidden: ({ document }) => (document?.enableVideoHeader ? false : true),
+    }),
+    defineField({
       type: "pageBuilder",
       name: "pageBuilder",
-      title: "Project Page Builder"
-    })
+      title: "Project Page Builder",
+    }),
   ],
 });
