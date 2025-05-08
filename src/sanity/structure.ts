@@ -1,8 +1,4 @@
-import {
-  RiBriefcase2Line,
-  RiBriefcase3Fill,
-  RiHome2Line,
-} from "react-icons/ri";
+import { RiBriefcase2Line, RiHashtag, RiHome2Line } from "react-icons/ri";
 import type { StructureResolver } from "sanity/structure";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
