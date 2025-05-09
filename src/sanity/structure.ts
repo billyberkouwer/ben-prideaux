@@ -1,4 +1,5 @@
-import { RiBriefcase2Line, RiHashtag, RiHome2Line } from "react-icons/ri";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
+import { RiBriefcase2Line, RiHome2Line } from "react-icons/ri";
 import type { StructureResolver } from "sanity/structure";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
@@ -6,7 +7,13 @@ export const structure: StructureResolver = (S, context) =>
   S.list()
     .title("Content")
     .items([
-      // ...S.documentTypeListItems(),
+      orderableDocumentListDeskItem({
+        type: "projectPage",
+        title: "Project Pages",
+        S,
+        context,
+        icon: RiBriefcase2Line,
+      }),
       S.listItem()
         .title("Home")
         .id("home")
@@ -14,8 +21,4 @@ export const structure: StructureResolver = (S, context) =>
         .child(
           S.document().schemaType("home").documentId("home").title("Home")
         ),
-      S.listItem()
-        .title("Project Pages")
-        .icon(RiBriefcase2Line)
-        .child(S.documentTypeList("projectPage")),
     ]);

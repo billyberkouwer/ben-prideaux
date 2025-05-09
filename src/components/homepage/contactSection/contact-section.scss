@@ -20,17 +20,15 @@
     }
 
     button {
-        background-color: var(--foreground);
-        padding: 0.25rem 0.5rem;
-        color: var(--background);
-        border: 0.5px solid var(--foreground);
+        // background-color: var(--foreground);
+        padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+        color: var(--foreground);
+        border-bottom: 0.5px solid var(--foreground);
         transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
-        border-radius: 1px;
-
+        text-align: left;
         &:hover {
-            color: var(--foreground);
-            background-color: var(--background);
-            border-radius: 5px;
+            color: var(--background);
+            background-color: var(--foreground);
         }
     }
 

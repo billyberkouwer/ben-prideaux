@@ -37,6 +37,10 @@
         }
     }
 
+    .page-title-nav-text {
+        text-transform: capitalize;
+    }
+
     .menu-list__container {
         box-sizing: border-box;
         padding: 0.5rem;
@@ -48,6 +52,32 @@
         height: var(--viewport-height);
         overflow-y: auto;
         border-left: 0.5px solid var(--foreground);
+
+        li {
+            font-size: 1.6rem;
+            font-weight: 100;
+            border-bottom: 1px var(--foreground) solid;
+            margin-bottom: 0.6rem;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            color: var(--foreground);
+            border-radius: 0px;
+
+            a {
+                width: 100%;
+                display: block;
+            }
+
+            &:hover {
+                background-color: var(--foreground);
+                color: var(--background);
+                border-radius: 5px;
+
+            }
+        }
+        
+        h4 {
+            margin: 7px 0;
+        }
 
         @include md {
             right: $nav-left-md;

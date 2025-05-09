@@ -31,3 +31,11 @@ type VideoControlProps = {
   onSeek: (e: Event, value: string) => void;
   onSeekMouseUp: (e: Event, value: number) => void;
 };
+
+type NavContent = {
+  title?: string,
+  subtitle?: string,
+  pageTitle?: string,
+}
+
+type NavMenuItem = { title: string, slug: string }

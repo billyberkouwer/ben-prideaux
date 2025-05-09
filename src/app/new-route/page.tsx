@@ -5,18 +5,35 @@ import VideoHeader from "@/components/video/VideoHeader";
 import { videoLinks } from "../page";
 import ProjectImage from "@/components/project-page/projectImage/ProjectImage";
 import "./page.scss";
+import Link from "next/link";
+import { sanityFetch } from "@/sanity/lib/live";
 
 const color = {
   background: "beige",
   foreground: "red",
 };
 
-function Page() {
+async function Page() {
+  const fetch = await sanityFetch({
+    query: `*[_type == "home"][0]{
+         ...
+        }`,
+  });
+
+  const homeContent = fetch.data;
+
+  const navContent: NavContent = {
+    title: homeContent.title,
+    subtitle: homeContent.subtitle,
+    pageTitle: "Some Title",
+  };
+
   return (
     <PageWrapper
       backgroundCol={color.background}
       foregroundCol={color.foreground}
       fixedNav
+      navContent={navContent}
     >
       <VideoHeader
         url={videoLinks[3].url}
@@ -45,7 +62,7 @@ function Page() {
           </ProjectColumn>
         </ProjectRow>
         <ProjectRow>
-          <ProjectColumn size="3"  yAlignment="align-self-end">
+          <ProjectColumn size="3" yAlignment="align-self-end">
             <ProjectImage />
           </ProjectColumn>
           <ProjectColumn size="6">
@@ -95,6 +112,22 @@ function Page() {
             />
           </ProjectColumn>
         </ProjectRow>
+      </div>
+      <div className="container project-nav__wrapper">
+        <nav className="row my-5">
+          <div className="col-md-3 col align-self-center">
+            <Link href="/" className="d-flex flex-column">
+              <span className="project-nav-title">Some Project</span>
+              <span>Previous Project</span>
+            </Link>
+          </div>
+          <div className="col-md-3 col offset-md-6 align-items-center justify-content-end">
+            <Link href="/" className="d-flex flex-column next-project">
+              <span className="project-nav-title next">Some Project</span>
+              <span>Previous Project</span>
+            </Link>
+          </div>
+        </nav>
       </div>
     </PageWrapper>
   );

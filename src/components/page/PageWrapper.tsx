@@ -1,42 +1,29 @@
-"use client";
-
-import { ReactNode, useState } from "react";
-import PageThemeConfig from "../theme/PageThemeConfig";
+import { ReactNode } from "react";
 import NavBar from "../nav/NavBar";
 import "./page-wrapper.scss";
-import { NavColorContext } from "@/utils/context";
-import SmoothScroll from "../smoothScroll/SmoothScroll";
-import Footer from "../footer/Footer";
-import Cursor from "../cursor/Cursor";
+import GlobalPageContent from "./GlobalPageContent";
 
 function PageWrapper({
   backgroundCol,
   foregroundCol,
   children,
   fixedNav,
+  navContent,
 }: {
   backgroundCol: string;
   foregroundCol: string;
   children: ReactNode;
   fixedNav?: boolean;
+  navContent?: NavContent;
 }) {
-  const [isNavLight, setIsNavLight] = useState(false);
-
   return (
-    <NavColorContext.Provider value={{ isNavLight, setIsNavLight }}>
-      <Cursor />
-      {/* <SmoothScroll> */}
-      <div className="page__wrapper">
-        <NavBar isFixed={fixedNav} />
-        <PageThemeConfig
-          backgroundCol={backgroundCol}
-          foregroundCol={foregroundCol}
-        />
-        <>{children}</>
-        <Footer />
-      </div>
-      {/* </SmoothScroll> */}
-    </NavColorContext.Provider>
+    <GlobalPageContent
+      backgroundCol={backgroundCol}
+      foregroundCol={foregroundCol}
+      navBar={<NavBar isFixed={fixedNav} navContent={navContent} />}
+    >
+      {children}
+    </GlobalPageContent>
   );
 }
 

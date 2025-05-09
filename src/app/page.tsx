@@ -3,6 +3,9 @@ import ProjectSection from "@/components/homepage/projectSection/ProjectSection"
 import AboutSection from "@/components/homepage/aboutSection/AboutSection";
 import ContactSection from "@/components/homepage/contactSection/ContactSection";
 import VideoHeader from "@/components/video/VideoHeader";
+import { sanityFetch } from "@/sanity/lib/live";
+import { client } from "@/sanity/lib/client";
+import { homeQuery, navListQuery } from "@/sanity/lib/queries";
 
 const color = {
   background: "black",
@@ -53,12 +56,25 @@ export const videoLinks = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const homeDataFetch = await sanityFetch({
+    query: homeQuery,
+  });
+
+  const homeContent = homeDataFetch.data;
+  
+  const navContent: NavContent = {
+    title: homeContent.title,
+    subtitle: homeContent.subtitle,
+    pageTitle: "Home",
+  }
+
   return (
     <PageWrapper
       backgroundCol={color.background}
       foregroundCol={color.foreground}
       fixedNav
+      navContent={navContent}
     >
       <VideoHeader
         url={videoLinks[3].url}

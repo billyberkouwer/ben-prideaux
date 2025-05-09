@@ -40,7 +40,6 @@ export const columnParagraph = defineType({
       offset: "columnOffset",
     },
     prepare({ width, offset, text }) {
-      console.log(text)
       return {
         title: "Paragraph item",
         subtitle:

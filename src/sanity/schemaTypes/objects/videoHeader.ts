@@ -20,7 +20,6 @@ export const videoHeader = defineType({
   ],
   validation: (rule) =>
     rule.custom((val, ctx) => {
-      console.log(val);
       if (ctx.document?.enableVideoHeader === true) {
         if (!val) {
           return "This field is required when you are choosing to use a video header on the project page.";

@@ -1,16 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import LottieLoader from "../lottie/LottieLoader";
 import MenuJson from "./menu-button.json";
 import { Data, DotLottie } from "@lottiefiles/dotlottie-react";
 import { parseRGBStringToNumbers } from "@/utils/reusableFunctions";
 //@ts-expect-error color converter doesn't have types
 import { fromString } from "css-color-converter";
+import { NavColorContext } from "@/utils/context";
 
 export default function MenuButton() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useContext(NavColorContext);
   const [lottieJson, setLottieJson] = useState<Data | null>(null);
 
   useEffect(() => {
@@ -79,15 +79,14 @@ export default function MenuButton() {
   }, []);
 
   const setFrame = useCallback((lottie: DotLottie) => {
-      lottie.setFrame(0);    
+    lottie.setFrame(0);
   }, []);
 
   return (
-    <span className="menu-button__wrapper col-1 offset-3">
+    <span className="menu-button__wrapper col-1 offset-5">
       <button
         onClick={() => {
           setIsMenuOpen(!isMenuOpen);
-          setIsPlaying(true);
         }}
       >
         <LottieLoader
@@ -96,9 +95,8 @@ export default function MenuButton() {
           height={20}
           speed={4}
           lottieJson={lottieJson}
-          play={isPlaying}
+          play={isMenuOpen ? "forward" : "reverse"}
           setFrame={setFrame}
-          onEnded={() => setIsPlaying(false)}
           mode={isMenuOpen ? "forward" : "reverse"}
         />
       </button>
