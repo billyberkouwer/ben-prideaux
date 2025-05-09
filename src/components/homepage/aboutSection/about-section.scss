@@ -1,8 +1,22 @@
-.about-images__container {
+.about-images__wrapper {
     border-radius: 2px;
-    position: relative;
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: auto;
     overflow: hidden;
+    filter: drop-shadow(0px 0px 10px black); // height: auto;
+
+    img {
+        object-fit: cover;
+    }
+}
+
+.about-images__container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-top: 3rem;
+
 }

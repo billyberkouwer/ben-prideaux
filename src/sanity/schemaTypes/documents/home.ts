@@ -22,6 +22,10 @@ export const home = defineType({
       title: "Portfolio Subtitle",
     }),
     defineField({
+      name: "pageColors",
+      type: "pageColors"
+    }),
+    defineField({
       name: "aboutText",
       type: "array",
       of: [{ type: "block" }],

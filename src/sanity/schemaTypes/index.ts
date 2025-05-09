@@ -12,7 +12,25 @@ import { columnParagraph } from "./objects/columnParagraph";
 import { aspectRatio } from "./objects/aspectRatio";
 import { columnVerticalAlignment } from "./objects/columnVerticalAlignment";
 import { videoHeader } from "./objects/videoHeader";
+import { pageColors } from "./objects/pageColors";
+
+const types = [
+  page,
+  home,
+  roles,
+  columnImage,
+  columnWidth,
+  columnOffset,
+  columnVideo,
+  columnParagraph,
+  columnVerticalAlignment,
+  videoHeader,
+  pageBuilder,
+  row,
+  aspectRatio,
+  pageColors
+]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [page, home, roles, columnImage, columnWidth, columnOffset, columnVideo, columnParagraph, columnVerticalAlignment, videoHeader, pageBuilder, row, aspectRatio],
+  types: types,
 };

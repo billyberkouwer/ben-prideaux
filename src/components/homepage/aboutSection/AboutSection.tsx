@@ -3,9 +3,21 @@
 import { whileInView } from "@/contants/motion";
 import { motion } from "motion/react";
 import Image from "next/image";
-import "./about-section.scss"
+import "./about-section.scss";
+import {
+  PortableText,
+  PortableTextBlock,
+  SanityImageAssetDocument,
+} from "next-sanity";
+import AboutImages from "./AboutImages";
 
-function AboutSection() {
+function AboutSection({
+  images,
+  text,
+}: {
+  images: SanityImageAssetDocument[];
+  text: PortableTextBlock[];
+}) {
   return (
     <motion.section
       initial="initial"
@@ -15,29 +27,8 @@ function AboutSection() {
       className="about-section__container col-lg-6"
     >
       <h2 className="section-title">About</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis a,
-        id amet, expedita accusamus assumenda delectus alias ab omnis quae
-        dolores aliquam iusto architecto facilis? Veniam quos sequi maiores
-        error! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
-        dolor at placeat! Cum suscipit placeat quaerat consequatur aliquam
-        nesciunt aperiam, excepturi similique delectus sunt, perspiciatis ut!
-        Illo eos ullam nihil! Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Quisquam voluptatem, quibusdam, fugiat, laborum, esse,
-        accusamus, doloremque, placeat, sunt, explicabo, nesciunt, autem! Velit,
-        consequatur! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Dolorem dolor at placeat! Cum suscipit placeat quaerat consequatur
-        aliquam nesciunt aperiam, excepturi similique delectus sunt,
-        perspiciatis ut!
-      </p>
-      <div className="about-images__container">
-        <Image
-          src={"/images/ben-picture.jpg"}
-          alt="about-picture"
-          fill
-          sizes="400px"
-        />
-      </div>
+      <PortableText value={text} />
+      <AboutImages images={images} />
     </motion.section>
   );
 }

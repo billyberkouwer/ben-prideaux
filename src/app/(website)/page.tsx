@@ -64,12 +64,6 @@ export default async function Home() {
 
   const homeContent = homeDataFetch.data;
 
-  const navContent: NavContent = {
-    title: homeContent.title,
-    subtitle: homeContent.subtitle,
-    pageTitle: "Home",
-  };
-
   return (
     <>
       <PageThemeConfig
@@ -90,7 +84,7 @@ export default async function Home() {
       <ProjectSection listItems={listItems} />
       <div className="container margin-bottom">
         <div className="row">
-          <AboutSection />
+          <AboutSection images={homeContent.aboutImages} text={homeContent.aboutText} />
           <ContactSection />
         </div>
       </div>

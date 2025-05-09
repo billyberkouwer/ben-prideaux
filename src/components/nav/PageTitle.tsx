@@ -7,7 +7,6 @@ export default function PageTitle({menuItems}: {menuItems: NavMenuItem[]}) {
     const pathname = usePathname();
 
     const menuItem = useMemo(() => {
-        console.log(pathname)
         return menuItems.find((item) => "/" + item.slug === pathname)
     }, [menuItems, pathname])
 

@@ -36,6 +36,10 @@ export const page = defineType({
       options: { dateFormat: "YYYY" },
     }),
     defineField({
+      name: "pageColors",
+      type: "pageColors"
+    }),
+    defineField({
       name: "role",
       type: "array",
       title: "Roles",
