@@ -4,18 +4,16 @@ import { NavColorContext } from "@/utils/context";
 import { ReactNode, useContext } from "react";
 
 export default function NavContainer({
-  isFixed,
   children,
 }: {
-  isFixed?: boolean;
   children: ReactNode;
 }) {
-  const { isNavLight } = useContext(NavColorContext);
+  const { isNavLight, isNavFixed } = useContext(NavColorContext);
 
   return (
     <nav
       className={`nav-bar__container container-fluid ${
-        isFixed ? "fixed" : ""
+        isNavFixed ? "fixed" : ""
       } ${isNavLight ? "nav-light" : ""}`}
     >
       {children}

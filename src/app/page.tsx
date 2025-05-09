@@ -6,6 +6,7 @@ import VideoHeader from "@/components/video/VideoHeader";
 import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 import { homeQuery, navListQuery } from "@/sanity/lib/queries";
+import PageThemeConfig from "@/components/theme/PageThemeConfig";
 
 const color = {
   background: "black",
@@ -25,7 +26,7 @@ const listItems = [
     year: "2024",
     categories: ["Editing"],
     images: ["/images/image-1.png", "/images/image-2.png"],
-    link: "/",
+    link: "/new-route",
   },
   {
     title: "Some Title",
@@ -62,20 +63,20 @@ export default async function Home() {
   });
 
   const homeContent = homeDataFetch.data;
-  
+
   const navContent: NavContent = {
     title: homeContent.title,
     subtitle: homeContent.subtitle,
     pageTitle: "Home",
-  }
+  };
 
   return (
-    <PageWrapper
-      backgroundCol={color.background}
-      foregroundCol={color.foreground}
-      fixedNav
-      navContent={navContent}
-    >
+    <>
+      <PageThemeConfig
+        backgroundCol={color.background}
+        foregroundCol={color.foreground}
+        isNavFixed
+      />
       <VideoHeader
         url={videoLinks[3].url}
         videoRatio={videoLinks[3].ratio}
@@ -93,6 +94,6 @@ export default async function Home() {
           <ContactSection />
         </div>
       </div>
-    </PageWrapper>
+    </>
   );
 }

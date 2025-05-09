@@ -5,27 +5,33 @@ import "./nav-bar.scss";
 import MenuButton from "./MenuButton";
 import NavContainer from "./NavContainer";
 import { sanityFetch } from "@/sanity/lib/live";
-import { navListQuery } from "@/sanity/lib/queries";
+import { navListQuery, navSiteDataQuery } from "@/sanity/lib/queries";
+import PageTitle from "./PageTitle";
 
-export default async function NavBar({ isFixed, navContent }: { isFixed?: boolean, navContent?: NavContent }) {
-  const navMenuItems: NavMenuItem[] = (await sanityFetch({ query: navListQuery })).data;
+export default async function NavBar() {
+  const navMenuItems: NavMenuItem[] = (
+    await sanityFetch({ query: navListQuery })
+  ).data;
+
+  const navSiteData = await (
+    await sanityFetch({ query: navSiteDataQuery })
+  ).data;
+
   return (
-    <NavContainer isFixed={isFixed}>
+    <NavContainer>
       <div className="row">
         <div className="col-2">
-          {navContent?.title ? (
-            <Link href={"/"}>{navContent?.title}</Link>
+          {navSiteData?.title ? (
+            <Link href={"/"}>{navSiteData?.title}</Link>
           ) : (
             <Link href={"/"}>Portfolio</Link>
           )}
         </div>
         <div className="col-2">
-          {navContent?.subtitle ? <span>{navContent?.subtitle}</span> : null}
+          {navSiteData?.subtitle ? <span>{navSiteData?.subtitle}</span> : null}
         </div>
         <div className="col-2">
-          {navContent?.pageTitle ? (
-            <span className="page-title-nav-text">{navContent?.pageTitle}</span>
-          ) : null}
+          <PageTitle menuItems={navMenuItems} />
         </div>
         <MenuButton />
       </div>
@@ -34,7 +40,7 @@ export default async function NavBar({ isFixed, navContent }: { isFixed?: boolea
         <ul>
           {navMenuItems?.map((menuItem, i) => (
             <li key={menuItem.title + i}>
-              <Link href={"/new-route"}>{menuItem.title}</Link>
+              <Link href={"/" + "new-route"}>{menuItem.title}</Link>
             </li>
           ))}
         </ul>

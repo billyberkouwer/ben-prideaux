@@ -57,7 +57,7 @@ export default function ProjectSection({
               type="radio"
               value="All"
               name="role"
-              onClick={(e) => setSelectedCategory(null)}
+              onClick={() => setSelectedCategory(null)}
             />
             <label className="change-cursor" htmlFor="All">All</label>
           </fieldset>

@@ -7,6 +7,7 @@ import ProjectImage from "@/components/project-page/projectImage/ProjectImage";
 import "./page.scss";
 import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
+import PageThemeConfig from "@/components/theme/PageThemeConfig";
 
 const color = {
   background: "beige",
@@ -29,12 +30,12 @@ async function Page() {
   };
 
   return (
-    <PageWrapper
-      backgroundCol={color.background}
-      foregroundCol={color.foreground}
-      fixedNav
-      navContent={navContent}
-    >
+    <>
+      <PageThemeConfig
+        backgroundCol={color.background}
+        foregroundCol={color.foreground}
+        isNavFixed
+      />
       <VideoHeader
         url={videoLinks[3].url}
         videoRatio={videoLinks[3].ratio}
@@ -129,7 +130,7 @@ async function Page() {
           </div>
         </nav>
       </div>
-    </PageWrapper>
+    </>
   );
 }
 

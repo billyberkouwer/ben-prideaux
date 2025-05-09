@@ -1,34 +1,39 @@
 "use client";
 
 import { NavColorContext } from "@/utils/context";
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, ReactNode, useEffect, useState } from "react";
 import Cursor from "../cursor/Cursor";
 import Footer from "../footer/Footer";
-import PageThemeConfig from "../theme/PageThemeConfig";
+import { usePathname } from "next/navigation";
 
 function GlobalPageContent({
   children,
   navBar,
-  backgroundCol,
-  foregroundCol,
 }: {
   children: ReactNode;
   navBar: ReactElement;
-  backgroundCol: string;
-  foregroundCol: string;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavLight, setIsNavLight] = useState(false);
+  const [isNavFixed, setIsNavFixed] = useState(true);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <NavColorContext.Provider
-      value={{ isNavLight, setIsNavLight, isMenuOpen, setIsMenuOpen }}
+      value={{
+        isNavLight,
+        setIsNavLight,
+        isMenuOpen,
+        setIsMenuOpen,
+        isNavFixed,
+        setIsNavFixed,
+      }}
     >
       <Cursor />
-      <PageThemeConfig
-        backgroundCol={backgroundCol}
-        foregroundCol={foregroundCol}
-      />
       <div className={`page__wrapper ${isMenuOpen ? "open" : ""}`}>
         {navBar}
         <div

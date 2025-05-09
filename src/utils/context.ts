@@ -5,4 +5,6 @@ export const NavColorContext = createContext<{
   setIsNavLight: (arg: boolean) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (arg: boolean) => void;
-}>({ isNavLight: true, setIsNavLight: () => { }, isMenuOpen: true, setIsMenuOpen: () => { } });
+  isNavFixed: boolean;
+  setIsNavFixed: (arg: boolean) => void;
+}>({ isNavLight: true, setIsNavLight: () => { }, isMenuOpen: true, setIsMenuOpen: () => { }, isNavFixed: true, setIsNavFixed: () => { } });
