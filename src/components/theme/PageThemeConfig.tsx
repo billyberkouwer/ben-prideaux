@@ -8,8 +8,8 @@ function setCssVariable(variableName: string, value: string) {
 }
 
 function PageThemeConfig({
-  backgroundCol,
-  foregroundCol,
+  backgroundCol = "white",
+  foregroundCol = "black",
   isNavFixed = true,
 }: {
   backgroundCol: string;
@@ -18,7 +18,7 @@ function PageThemeConfig({
 }) {
   const { setIsNavFixed } = useContext(NavColorContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsNavFixed(isNavFixed);
   }, [isNavFixed, setIsNavFixed]);
 

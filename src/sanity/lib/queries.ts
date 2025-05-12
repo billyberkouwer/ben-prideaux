@@ -1,4 +1,4 @@
-import { groq } from "next-sanity";
+import { groq, SanityDocument } from "next-sanity";
 
 export const homeQuery = groq`*[_type == "home"][0]{
     ...,
@@ -13,4 +13,13 @@ export const navSiteDataQuery = groq`*[_type == "home"][0]{
 export const navListQuery = groq`*[_type == "projectPage"]{
     title,
     "slug": slug.current
+}`
+
+export const projectPages = groq`*[_type == "projectPage"]{
+    ...,
+    "slug": slug.current
+}`
+
+export const projectPageBySlug = groq`*[_type == "projectPage" && slug.current == $slug][0]{
+    ...
 }`

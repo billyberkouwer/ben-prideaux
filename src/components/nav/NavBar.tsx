@@ -40,7 +40,7 @@ export default async function NavBar() {
         <ul>
           {navMenuItems?.map((menuItem, i) => (
             <li key={menuItem.title + i}>
-              <Link href={"/" + "new-route"}>{menuItem.title}</Link>
+              <Link href={"/" + menuItem.slug}>{menuItem.title}</Link>
             </li>
           ))}
         </ul>

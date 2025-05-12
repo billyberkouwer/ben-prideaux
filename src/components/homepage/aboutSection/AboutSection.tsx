@@ -24,7 +24,7 @@ function AboutSection({
       whileInView="animate"
       variants={whileInView}
       viewport={{ once: true }}
-      className="about-section__container col-lg-6"
+      className="about-section__container col-lg-6 container"
     >
       <h2 className="section-title">About</h2>
       <PortableText value={text} />

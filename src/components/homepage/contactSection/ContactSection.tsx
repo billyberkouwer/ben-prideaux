@@ -11,7 +11,7 @@ function ContactSection() {
       whileInView="animate"
       variants={whileInView}
       viewport={{ once: true }}
-      className="contact-section__container container col-6"
+      className="contact-section__container container col-lg-6 col"
     >
       <h2 className="section-title">Contact</h2>
       <div className="contact-text__container row g-0">

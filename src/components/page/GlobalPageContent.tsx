@@ -46,8 +46,8 @@ function GlobalPageContent({
         >
           <>{children}</>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </NavColorContext.Provider>
   );
 }

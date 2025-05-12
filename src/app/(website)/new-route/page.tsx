@@ -1,4 +1,3 @@
-import PageWrapper from "@/components/page/PageWrapper";
 import ProjectColumn from "@/components/project-page/projectColumn/ProjectColumn";
 import ProjectRow from "@/components/project-page/projectRow/ProjectRow";
 import VideoHeader from "@/components/video/VideoHeader";
@@ -6,7 +5,6 @@ import { videoLinks } from "../page";
 import ProjectImage from "@/components/project-page/projectImage/ProjectImage";
 import "./page.scss";
 import Link from "next/link";
-import { sanityFetch } from "@/sanity/lib/live";
 import PageThemeConfig from "@/components/theme/PageThemeConfig";
 
 const color = {
@@ -15,19 +13,6 @@ const color = {
 };
 
 async function Page() {
-  const fetch = await sanityFetch({
-    query: `*[_type == "home"][0]{
-         ...
-        }`,
-  });
-
-  const homeContent = fetch.data;
-
-  const navContent: NavContent = {
-    title: homeContent.title,
-    subtitle: homeContent.subtitle,
-    pageTitle: "Some Title",
-  };
 
   return (
     <>

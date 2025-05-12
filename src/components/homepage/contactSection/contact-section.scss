@@ -1,5 +1,5 @@
 .contact-section__container {
-    
+
     /* Remove default margin */
     form,
     input,
@@ -26,6 +26,8 @@
         border-bottom: 0.5px solid var(--foreground);
         transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
         text-align: left;
+        font-weight: bold;
+
         &:hover {
             color: var(--background);
             background-color: var(--foreground);

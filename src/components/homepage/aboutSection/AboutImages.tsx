@@ -1,44 +1,67 @@
 import { SanityImageAssetDocument } from "next-sanity";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { motion, spring, useAnimate } from "motion/react";
-import { duration } from "@mui/material";
+import "./about-images.scss";
+import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 
-export default function AboutImages({
-  images,
-}: {
-  images: SanityImageAssetDocument[];
-}) {
-  const [isHovered, setIsHovered] = useState(false);
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+};
+
+function AboutImages({ images }: { images?: SanityImageAssetDocument[] }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    let index = 0;
+
+    const fadeImages = () => {
+      if (images?.length) {
+        if (index < images.length - 1) {
+          index++;
+          setCurrentImageIndex(index);
+        } else {
+          index = 0;
+          setCurrentImageIndex(index);
+        }
+      }
+    };
+
+    const interval = setInterval(fadeImages, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [images]);
 
   return (
-    <motion.div
-      className="about-images__container"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      {images.reverse().map((image, i) => (
-        <motion.div
-          animate={{
-            rotate: isHovered
-              ? Math.random() * 20 - 10
-              : Math.random() * 5 - 2.5,
-            x: isHovered ? `calc(20vw * ${i})` : 0,
-            opacity: isHovered ? 1 : 1 / (images.length - i),
-            transition: { duration: 0.5, type: spring },
-          }}
-          className="about-images__wrapper"
-          style={{ aspectRatio: image.metadata.dimensions.aspectRatio }}
-          key={image.url + i}
-        >
-          <Image
-            src={image.url}
-            alt="about-picture"
-            layout="fill"
-            sizes="400px"
-          />
-        </motion.div>
-      ))}
-    </motion.div>
+    <div className="about-image__container col">
+      {images?.length
+        ? images.map((image, i) => (
+            <motion.div
+              className="about-image__wrapper"
+              key={"about wrapper" + image.url + i}
+              style={{
+                aspectRatio: `${image.metadata.dimensions.width} / ${image.metadata.dimensions.height}`,
+              }}
+              variants={variants}
+              animate={i === currentImageIndex ? "animate" : "initial"}
+            >
+              <Image
+                src={image.url}
+                alt={"about image " + i}
+                fill
+                sizes="20vw"
+              />
+            </motion.div>
+          ))
+        : null}
+    </div>
   );
 }
+
+export default AboutImages;
