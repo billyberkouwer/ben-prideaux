@@ -5,7 +5,11 @@ import ContactSection from "@/components/homepage/contactSection/ContactSection"
 import VideoHeader from "@/components/video/Video";
 import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
-import { homeQuery, navListQuery } from "@/sanity/lib/queries";
+import {
+  homepageProjectsQuery,
+  homeQuery,
+  navListQuery,
+} from "@/sanity/lib/queries";
 import PageThemeConfig from "@/components/theme/PageThemeConfig";
 
 const color = {
@@ -58,33 +62,49 @@ export const videoLinks = [
 ];
 
 export default async function Home() {
-  const homeDataFetch = await sanityFetch({
-    query: homeQuery,
-  });
+  const pageData = (
+    await sanityFetch({
+      query: homeQuery,
+    })
+  ).data;
 
-  const homeContent = homeDataFetch.data;
+  const projectsData = await (
+    await sanityFetch({ query: homepageProjectsQuery })
+  ).data;
+
+  console.log(projectsData)
 
   return (
     <>
       <PageThemeConfig
-        backgroundCol={color.background}
-        foregroundCol={color.foreground}
-        isNavFixed
+        backgroundCol={pageData?.pageColors.backgroundColor.hex ?? undefined}
+        foregroundCol={pageData?.pageColors.foregroundColor.hex ?? undefined}
+        isNavFixed={
+          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl
+        }
       />
-      <VideoHeader
-        url={videoLinks[3].url}
-        videoRatio={videoLinks[3].ratio}
-        id={videoLinks[3].url}
-        showControls={false}
-        isClickable={false}
-        isLandingVideo
-        // cropYoutubeUI
-        objectFit="cover"
-      />
-      <ProjectSection listItems={listItems} />
+      {pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? (
+        <VideoHeader
+          url={pageData.videoHeader.videoUrl}
+          videoRatio={{
+            x: pageData.videoHeader.videoAspectRatio.x,
+            y: pageData.videoHeader.videoAspectRatio.y,
+          }}
+          id={pageData.videoHeader.videoUrl + "-header"}
+          showControls={pageData.videoHeader.showControls}
+          isClickable={pageData.videoHeader.showControls}
+          isLandingVideo
+          cropYoutubeUI={pageData.videoHeader.cropYoutubeUI}
+          objectFit="cover"
+        />
+      ) : null}
+      <ProjectSection listItems={projectsData} />
       <div className="container margin-bottom">
         <div className="row">
-          <AboutSection images={homeContent.aboutImages} text={homeContent.aboutText} />
+          <AboutSection
+            images={pageData.aboutImages}
+            text={pageData.aboutText}
+          />
           <ContactSection />
         </div>
       </div>

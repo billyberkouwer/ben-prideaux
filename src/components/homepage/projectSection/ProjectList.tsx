@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import ProjectListItem from "./ProjectListItem";
 import { AnimatePresence, motion } from "motion/react";
 import { whileInView } from "@/contants/motion";
+import { ProjectListItemType } from "@/types/Homepage";
 
 const containerAnimations = {
   initial: {
@@ -32,9 +33,9 @@ export default function ProjectList({
       selectedCategory === undefined || selectedCategory === null
         ? projectItems
         : projectItems.filter((proj) => {
-            for (let i = 0; i < proj.categories.length; i++) {
+            for (let i = 0; i < proj.roles.length; i++) {
               if (
-                proj.categories[i].toLowerCase() ===
+                proj.roles[i].toLowerCase() ===
                 selectedCategory.toLowerCase()
               ) {
                 return true;

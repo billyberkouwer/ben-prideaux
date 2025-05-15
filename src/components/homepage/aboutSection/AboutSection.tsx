@@ -24,10 +24,12 @@ function AboutSection({
       whileInView="animate"
       variants={whileInView}
       viewport={{ once: true }}
-      className="about-section__container col-lg-6 container"
+      className="about-section__container col-lg-6"
     >
       <h2 className="section-title">About</h2>
-      <PortableText value={text} />
+      <div className="about-text__container">
+        <PortableText value={text} />
+      </div>
       <AboutImages images={images} />
     </motion.section>
   );

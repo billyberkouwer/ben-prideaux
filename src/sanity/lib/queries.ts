@@ -1,4 +1,4 @@
-import { groq, SanityDocument } from "next-sanity";
+import { groq } from "next-sanity";
 
 export const homeQuery = groq`*[_type == "home"][0]{
     ...,
@@ -30,4 +30,12 @@ export const projectPageBySlug = groq`*[_type == "projectPage" && slug.current =
             @{"image": image.asset->},
     }
   }
+}`
+
+export const homepageProjectsQuery = groq`*[_type == "projectPage" ]|order(orderRank){
+  date,
+  title,
+  "slug": slug.current,
+  "roles": role[]->.title,
+  "projectImages": pageBuilder[].rowItems[_type == "columnImage"].image.asset->
 }`

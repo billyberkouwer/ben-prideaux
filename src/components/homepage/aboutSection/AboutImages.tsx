@@ -39,7 +39,7 @@ function AboutImages({ images }: { images?: SanityImageAssetDocument[] }) {
   }, [images]);
 
   return (
-    <div className="about-image__container col">
+    <div className="about-image__container">
       {images?.length
         ? images.map((image, i) => (
             <motion.div
@@ -55,7 +55,7 @@ function AboutImages({ images }: { images?: SanityImageAssetDocument[] }) {
                 src={image.url}
                 alt={"about image " + i}
                 fill
-                sizes="20vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
               />
             </motion.div>
           ))

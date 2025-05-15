@@ -5,7 +5,8 @@ import "./project-list.scss";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useEventListener, useInterval } from "usehooks-ts";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { ProjectListItemProps } from "@/types/Homepage";
 
 const listAnimations = {
   initial: {
@@ -24,10 +25,10 @@ const listAnimations = {
 
 export default function ProjectListItem({
   title,
-  year,
-  categories,
-  images,
-  link,
+  date,
+  roles,
+  projectImages,
+  slug,
   isList,
 }: ProjectListItemProps) {
   const x = useMotionValue(0);
@@ -37,6 +38,9 @@ export default function ProjectListItem({
   const projectItemRef = useRef<HTMLLIElement>(null);
   const isHovered = useRef(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const year = useMemo(() => {
+    return new Date(date).getFullYear();
+  }, [date]);
 
   useEventListener("mousemove", (e) => {
     x.set(e.x);
@@ -45,13 +49,15 @@ export default function ProjectListItem({
 
   useInterval(() => {
     if (isHovered.current) {
-      setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setImageIndex((prevIndex) => (prevIndex + 1) % projectImages.length);
     }
   }, 2000);
 
+  console.log(projectImages);
+
   return (
     <motion.li
-      className={`project-item__container  ${isList ? "col-12 margin-bottom" : "col-lg-4"}`}
+      className={`project-item__container  ${isList ? "col-12 margin" : "col-lg-4"}`}
       variants={listAnimations}
       ref={projectItemRef}
       onMouseEnter={() => {
@@ -61,9 +67,9 @@ export default function ProjectListItem({
         isHovered.current = false;
       }}
     >
-      <Link href={link}>
+      <Link href={"/" + slug}>
         <motion.div
-          className={`project-images__wrapper ${isList ? "list-view" : ""}`}
+          className={`project-section-images__container ${isList ? "list-view" : ""}`}
           style={
             isList
               ? {
@@ -74,22 +80,22 @@ export default function ProjectListItem({
               : { position: "relative" }
           }
         >
-          {images.map((image, i) => (
+          {projectImages.map((image, i) => (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              key={image + i}
+              key={image._id + i}
+              className="project-section-image__wrapper"
             >
               <Image
-                alt="anything"
-                src={image}
+                alt={image.alt ?? "Image " + (i + 1)}
+                src={image.url}
                 fill
                 loading="eager"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
                 style={{
-                  objectFit: "cover",
                   opacity: imageIndex === i ? 1 : 0,
-                  transition: "opacity 0.5s ease-in-out",
                 }}
               />
             </motion.div>
@@ -99,7 +105,7 @@ export default function ProjectListItem({
           <h4 className="project-title">{title}</h4>
           <span className="project-year">{year}</span>
           <div className="project-category__container">
-            {categories.map((category, i) => (
+            {roles.map((category, i) => (
               <div key={"category-item-" + category + i}>{category}</div>
             ))}
           </div>

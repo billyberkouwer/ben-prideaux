@@ -14,7 +14,7 @@ function ContactSection() {
       className="contact-section__container container col-lg-6 col"
     >
       <h2 className="section-title">Contact</h2>
-      <div className="contact-text__container row g-0">
+      <div className="contact-text__container g-0">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
           cupiditate quisquam adipisci unde aperiam exercitationem dolores,

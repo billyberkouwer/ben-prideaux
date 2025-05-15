@@ -7,7 +7,7 @@
             background-color: var(--foreground);
         }
 
-        .project-images__wrapper {
+        .project-section-images__container {
 
             &.list-view {
                 opacity: 1;
@@ -24,17 +24,27 @@
         overflow: hidden;
     }
 
-    &.margin-bottom {
-        margin-bottom: 5rem;
+    &.margin {
+        margin: 2.5rem 0;
     }
 
-    .project-images__wrapper {
-        position: relative;
+    .project-section-images__container {
         height: auto;
         aspect-ratio: 16 / 9;
-        // background-color: var(--background);
         border-radius: 2px;
         overflow: hidden;
+
+        .project-section-image__wrapper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            
+            img {
+                object-fit: cover;
+                transition: opacity 0.5s ease-in-out;
+                position: relative;
+            }
+        }
 
         &.list-view {
             top: 0;
@@ -45,6 +55,11 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.2s, visibility 0.2s, border-radius 0.2s;
+
+            &.visible {
+                opacity: 1;
+                visibility: visible;
+            } 
         }
     }
 
