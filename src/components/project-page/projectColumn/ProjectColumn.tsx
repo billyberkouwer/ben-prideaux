@@ -5,14 +5,18 @@ import { motion } from "motion/react";
 import { ReactNode } from "react";
 
 function ProjectColumn({
-  size = "1",
-  offset = "0",
+  size = 6,
+  offset = 0,
   yAlignment = "align-self-start",
   children,
 }: {
-  size?: string;
-  offset?: string;
-  yAlignment?: "align-self-start" | "align-self-center" | "align-self-end" | undefined;
+  size?: number;
+  offset?: number;
+  yAlignment?:
+    | "align-self-start"
+    | "align-self-center"
+    | "align-self-end"
+    | undefined;
   children: ReactNode;
 }) {
   return (
@@ -21,7 +25,7 @@ function ProjectColumn({
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.3 }}
-      className={`pt-2 col-lg-${size} col-sm-${parseInt(size) * 2} offset-lg-${offset} ${yAlignment}`}
+      className={`pt-2 col-lg-${size} col-sm-${size >= 6 ? 12 : 6} offset-lg-${offset} ${yAlignment ? yAlignment : ""}`}
     >
       {children}
     </motion.div>

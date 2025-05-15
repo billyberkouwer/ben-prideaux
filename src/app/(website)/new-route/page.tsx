@@ -1,6 +1,6 @@
 import ProjectColumn from "@/components/project-page/projectColumn/ProjectColumn";
 import ProjectRow from "@/components/project-page/projectRow/ProjectRow";
-import VideoHeader from "@/components/video/VideoHeader";
+import VideoHeader from "@/components/video/Video";
 import { videoLinks } from "../page";
 import ProjectImage from "@/components/project-page/projectImage/ProjectImage";
 import "./page.scss";

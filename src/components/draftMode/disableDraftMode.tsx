@@ -1,21 +1,43 @@
 "use client";
 
-import { useDraftModeEnvironment } from "next-sanity/hooks";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { disableDraftMode } from "@/app/actions";
+import "./disable-draft-mode.scss";
 
 export function DisableDraftMode() {
-  const environment = useDraftModeEnvironment();
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
 
-  // Only show the disable draft mode button when outside of Presentation Tool
-  if (environment !== "live" && environment !== "unknown") {
+  if (window !== window.parent || !!window.opener) {
     return null;
   }
 
+  const disable = () =>
+    startTransition(async () => {
+      await disableDraftMode();
+      router.refresh();
+    });
+
   return (
-    <a
-      href="/api/draft-mode/disable"
-      className="fixed bottom-4 right-4 bg-gray-50 px-4 py-2"
-    >
-      Disable Draft Mode
-    </a>
+    <div className="disable-draftmode__wrapper">
+      <div style={{ display: isButtonHovered ? "block" : "none", textAlign: "right" }}>
+        You`re currently viewing the page in draft mode.<br /> Only you can see this
+        version of the site.
+      </div>
+      {pending ? (
+        "Disabling draft mode..."
+      ) : (
+        <button
+          type="button"
+          onClick={disable}
+          onPointerOver={() => setIsButtonHovered(true)}
+          onPointerLeave={() => setIsButtonHovered(false)}
+        >
+          Disable draft mode
+        </button>
+      )}
+    </div>
   );
 }

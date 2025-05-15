@@ -1,16 +1,13 @@
 @use "@/styles/_mixins.scss" as *;
 
 .project-item__container {
-
     &:hover {
         a {
             color: var(--background);
             background-color: var(--foreground);
-            border-radius: 12px;
         }
 
         .project-images__wrapper {
-            border-radius: 12px;
 
             &.list-view {
                 opacity: 1;
@@ -23,6 +20,8 @@
         transition: border-radius 0.5s, color 0.2s, background-color 0.2s;
         display: block;
         border-bottom: 0.5px solid var(--foreground);
+        border-radius: 2px;
+        overflow: hidden;
     }
 
     &.margin-bottom {
@@ -33,10 +32,9 @@
         position: relative;
         height: auto;
         aspect-ratio: 16 / 9;
-        overflow: hidden;
+        // background-color: var(--background);
         border-radius: 2px;
-        transition: border-radius 0.5s;
-        background-color: var(--background);
+        overflow: hidden;
 
         &.list-view {
             top: 0;

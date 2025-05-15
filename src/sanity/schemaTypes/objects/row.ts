@@ -19,6 +19,13 @@ export const row = defineType({
         defineArrayMember({ type: "columnParagraph" }),
       ],
     }),
+    defineField({
+      type: "boolean",
+      name: "hasPadding",
+      title: "Should this row have padding?",
+      description: "This adds padding/margin to the top and bottom of this row. This can give some breathing room between this piece of content and the surrounding rows.",
+      initialValue: false,
+    })
   ],
   preview: {
     select: {

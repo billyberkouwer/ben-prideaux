@@ -10,7 +10,7 @@ import { OnProgressProps } from "react-player/base";
 import { NavColorContext } from "@/utils/context";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-function VideoHeader({
+function Video({
   url,
   videoRatio,
   id,
@@ -198,4 +198,4 @@ function VideoHeader({
   );
 }
 
-export default VideoHeader;
+export default Video;

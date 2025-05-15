@@ -11,14 +11,15 @@
     aspect-ratio: var(--video-aspect-ratio);
     position: relative;
     box-sizing: border-box;
-    // border-radius: 5px;
-
+    border-radius: 3px;
+    overflow: hidden;
 
     &.landing-video {
         top: 0;
         width: 100%;
         height: var(--viewport-height);
         overflow: hidden;
+        border-radius: unset;
         object-fit: cover;
     }
 

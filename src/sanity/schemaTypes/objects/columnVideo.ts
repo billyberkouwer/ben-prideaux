@@ -43,6 +43,12 @@ export const columnVideo = defineType({
       name: "columnVerticalAlignment",
       title: "Vertical Alignment",
     }),
+    defineField({
+      type: "boolean",
+      name: "showControls",
+      title: "Show Controls",
+      initialValue: true,
+    }),
   ],
   preview: {
     select: {

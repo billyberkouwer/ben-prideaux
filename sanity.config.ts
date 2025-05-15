@@ -12,7 +12,8 @@ import { structureTool } from "sanity/structure";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
-import {colorInput} from '@sanity/color-input'
+import { colorInput } from '@sanity/color-input'
+import { presentationTool } from 'sanity/presentation'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
@@ -30,6 +31,15 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    presentationTool({
+      previewUrl: {
+        origin: "http://localhost:3000",
+        preview: "/",
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+        },
+      },
+    }),
   ],
   scheduledPublishing: {
     enabled: false,

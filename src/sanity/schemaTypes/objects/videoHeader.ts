@@ -17,6 +17,18 @@ export const videoHeader = defineType({
       name: "videoAspectRatio",
       title: "Video Aspect Ratio",
     }),
+    defineField({
+      type: "boolean",
+      name: "showControls",
+      title: "Show Controls",
+      initialValue: true,
+    }),
+    defineField({
+      type: "boolean",
+      name: "cropYoutubeUI",
+      title: "Crop YouTube UI",
+      initialValue: true
+    })
   ],
   validation: (rule) =>
     rule.custom((val, ctx) => {

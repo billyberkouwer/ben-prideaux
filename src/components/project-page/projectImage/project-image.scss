@@ -1,0 +1,10 @@
+.project-image__wrapper {
+    position: relative;
+    object-fit: contain;
+    border-radius: 3px;
+    overflow: hidden;
+
+    img {
+        position: relative;
+    }
+}

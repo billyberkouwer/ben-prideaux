@@ -161,8 +161,8 @@ function Cursor() {
           autoplay
           play={isHovered ? "forward" : "reverse"}
           lottieJson={lottieJson}
-          width="28px"
-          height="28px"
+          width="22px"
+          height="22px"
           speed={6}
         />
       </div>

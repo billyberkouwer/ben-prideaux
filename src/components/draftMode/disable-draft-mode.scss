@@ -1,0 +1,16 @@
+.disable-draftmode__wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    z-index: 9;
+    pointer-events: all;
+
+    button {
+        float: right;
+        background-color: var(--foreground);
+        color: var(--background);
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}

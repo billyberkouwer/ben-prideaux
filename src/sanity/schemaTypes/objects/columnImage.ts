@@ -11,6 +11,14 @@ export const columnImage = defineType({
       type: "image",
       name: "image",
       title: "Image",
+      fields: [
+        {
+          name: 'alt',
+          title: "alt text",
+          description: "This text is used by site readers and search engines. Writing a short description of the image can improve your website's SEO.",
+          type: 'string',
+        }
+      ]
     }),
     defineField({
       type: "columnWidth",

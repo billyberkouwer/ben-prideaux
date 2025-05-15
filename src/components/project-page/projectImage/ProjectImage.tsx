@@ -1,28 +1,43 @@
 "use client";
 
+import "./project-image.scss";
 import Image from "next/image";
-import ProjectColumn from "../projectColumn/ProjectColumn";
+
+function imageSizes(size: number) {
+  switch (size) {
+    case 1:
+      return "(max-width: 768px) 40vw, (max-width: 1200px) 20vw, 10vw";
+    default:
+      return "(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw";
+  }
+}
 
 export default function ProjectImage({
-  src = "/images/image-2.png",
-  size = "medium",
-  offset = undefined,
-  yAlignment = undefined,
+  src,
+  aspectRatio = "4 / 4",
+  alt,
+  size = 6,
 }: {
   src: string;
-  size?: "small" | "medium" | "large" | "auto" | undefined;
-  offset?: "small" | "medium" | "large" | "auto" | undefined;
-  yAlignment?: "bottom" | "middle" | "top" | undefined;
+  aspectRatio: string;
+  alt?: string;
+  size?: number;
 }) {
-  return (
-    <div
-      style={{
-        position: "relative",
-        aspectRatio: "16/9",
-        objectFit: "contain",
-      }}
-    >
-      <Image src={src} fill sizes="500px" alt="alt" />
-    </div>
-  );
+  if (src) {
+    return (
+      <div
+        className="project-image__wrapper"
+        style={{ aspectRatio: aspectRatio }}
+      >
+        <Image
+          src={src}
+          alt={alt ? alt : "Image"}
+          fill
+          sizes={imageSizes(size)}
+        />
+      </div>
+    );
+  }
+
+  return null;
 }

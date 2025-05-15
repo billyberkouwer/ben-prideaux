@@ -2,7 +2,7 @@ import PageWrapper from "@/components/page/PageWrapper";
 import ProjectSection from "@/components/homepage/projectSection/ProjectSection";
 import AboutSection from "@/components/homepage/aboutSection/AboutSection";
 import ContactSection from "@/components/homepage/contactSection/ContactSection";
-import VideoHeader from "@/components/video/VideoHeader";
+import VideoHeader from "@/components/video/Video";
 import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 import { homeQuery, navListQuery } from "@/sanity/lib/queries";

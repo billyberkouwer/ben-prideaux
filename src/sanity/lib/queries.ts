@@ -21,5 +21,13 @@ export const projectPages = groq`*[_type == "projectPage"]{
 }`
 
 export const projectPageBySlug = groq`*[_type == "projectPage" && slug.current == $slug][0]{
-    ...
+    ...,
+    "pageBuilder": pageBuilder[]{
+        hasPadding,
+        "rowItems": rowItems[]{
+        ...,
+        _type == "columnImage" => 
+            @{"image": image.asset->},
+    }
+  }
 }`
