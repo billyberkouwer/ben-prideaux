@@ -87,8 +87,8 @@ export default function ProjectListItem({
               className="project-section-image__wrapper"
             >
               <Image
-                alt={image.alt ?? "Image " + (i + 1)}
-                src={image.url}
+                alt={image?.alt ?? "Image " + (i + 1)}
+                src={image?.url}
                 fill
                 loading="eager"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
