@@ -1,13 +1,13 @@
-import ProjectSection from "@/components/homepage/projectSection/ProjectSection";
-import AboutSection from "@/components/homepage/aboutSection/AboutSection";
-import ContactSection from "@/components/homepage/contactSection/ContactSection";
-import VideoHeader from "@/components/video/Video";
+import ProjectSection from "@/components/Homepage/ProjectSection/ProjectSection";
+import AboutSection from "@/components/Homepage/AboutSection/AboutSection";
+import ContactSection from "@/components/Homepage/ContactSection/ContactSection";
+import VideoHeader from "@/components/Video/Video";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
   homepageProjectsQuery,
   homeQuery,
 } from "@/sanity/lib/queries";
-import PageThemeConfig from "@/components/theme/PageThemeConfig";
+import PageThemeConfig from "@/components/Theme/PageThemeConfig";
 import { defaultBackground, defaultForeground } from "@/sanity/lib/constants";
 
 export default async function Home() {

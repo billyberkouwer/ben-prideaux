@@ -2,7 +2,7 @@ import { RowItem } from "@/types/ProjectPage";
 import { PortableText } from "next-sanity";
 import ProjectColumn from "./projectColumn/ProjectColumn";
 import ProjectImage from "./projectImage/ProjectImage";
-import Video from "../video/Video";
+import Video from "../Video/Video";
 import ProjectRow from "./projectRow/ProjectRow";
 
 export default function ProjectRowBuilder({

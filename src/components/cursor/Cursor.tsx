@@ -1,6 +1,6 @@
 "use client";
 
-import LottieLoader from "../lottie/LottieLoader";
+import LottieLoader from "../Lottie/LottieLoader";
 import { useEffect, useRef, useState } from "react";
 import "./cursor.scss";
 import cursorJson from "./cursor.json";

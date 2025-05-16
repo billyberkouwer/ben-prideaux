@@ -2,8 +2,8 @@
 
 import { NavColorContext } from "@/utils/context";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
-import Cursor from "../cursor/Cursor";
-import Footer from "../footer/Footer";
+import Cursor from "../Cursor/Cursor";
+import Footer from "../Footer/Footer";
 import { usePathname } from "next/navigation";
 
 function GlobalPageContent({

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useContext, useEffect, useState } from "react";
-import LottieLoader from "../lottie/LottieLoader";
+import LottieLoader from "../Lottie/LottieLoader";
 import MenuJson from "./menu-button.json";
 import { Data, DotLottie } from "@lottiefiles/dotlottie-react";
 import { parseRGBStringToNumbers } from "@/utils/reusableFunctions";

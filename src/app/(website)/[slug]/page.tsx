@@ -1,8 +1,8 @@
-import ProjectColumn from "@/components/project-page/projectColumn/ProjectColumn";
-import ProjectPageBuilder from "@/components/project-page/ProjectPageBuilder";
-import ProjectRow from "@/components/project-page/projectRow/ProjectRow";
-import PageThemeConfig from "@/components/theme/PageThemeConfig";
-import VideoHeader from "@/components/video/Video";
+import ProjectColumn from "@/components/ProjectPage/projectColumn/ProjectColumn";
+import ProjectPageBuilder from "@/components/ProjectPage/ProjectPageBuilder";
+import ProjectRow from "@/components/ProjectPage/projectRow/ProjectRow";
+import PageThemeConfig from "@/components/Theme/PageThemeConfig";
+import VideoHeader from "@/components/Video/Video";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import { projectPageBySlug, projectPages } from "@/sanity/lib/queries";
