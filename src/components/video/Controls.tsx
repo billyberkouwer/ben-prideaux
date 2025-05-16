@@ -6,12 +6,10 @@ import {
   FullscreenExit,
   Pause,
   PlayArrow,
-  VolumeMute,
   VolumeOff,
   VolumeUp,
 } from "@mui/icons-material";
 import { AnimatePresence } from "motion/react";
-import { useEventListener } from "usehooks-ts";
 import { useEffect, useRef, useState } from "react";
 
 export default function Controls({

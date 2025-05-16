@@ -10,8 +10,8 @@ function ContactSection() {
       initial="initial"
       whileInView="animate"
       variants={whileInView}
-      viewport={{ once: true }}
-      className="contact-section__container container col-lg-6 col"
+      // viewport={{ once: true }}
+      className="contact-section__container container col-lg-6 col mt-5"
     >
       <h2 className="section-title">Contact</h2>
       <div className="contact-text__container g-0">

@@ -1,6 +1,7 @@
+import { SVGProps } from "react";
 import "./social-icons.scss"
 
-function InstagramIcon(props) {
+function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

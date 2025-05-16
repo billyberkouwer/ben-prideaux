@@ -1,6 +1,7 @@
+import { SVGProps } from "react";
 import "./social-icons.scss";
 
-const SvgComponent = (props) => (
+const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     id="Layer_1"

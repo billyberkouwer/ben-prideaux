@@ -11,15 +11,15 @@ import { ProjectListItemProps } from "@/types/Homepage";
 const listAnimations = {
   initial: {
     opacity: 0,
-    x: -100,
+    // x: -100,
   },
   animate: {
     opacity: 1,
-    x: 0,
+    // x: 0,
   },
   exit: {
     opacity: 0,
-    x: 100,
+    // x: 100,
   },
 };
 
@@ -48,12 +48,10 @@ export default function ProjectListItem({
   });
 
   useInterval(() => {
-    if (isHovered.current) {
-      setImageIndex((prevIndex) => (prevIndex + 1) % projectImages.length);
+    if (isHovered.current && projectImages?.length) {
+      setImageIndex((prevIndex) => (prevIndex + 1) % projectImages?.length);
     }
   }, 2000);
-
-  console.log(projectImages);
 
   return (
     <motion.li
@@ -80,7 +78,7 @@ export default function ProjectListItem({
               : { position: "relative" }
           }
         >
-          {projectImages.map((image, i) => (
+          {projectImages?.length ? projectImages.map((image, i) => (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -99,15 +97,15 @@ export default function ProjectListItem({
                 }}
               />
             </motion.div>
-          ))}
+          )) : null}
         </motion.div>
         <div className="project-info__container">
           <h4 className="project-title">{title}</h4>
           <span className="project-year">{year}</span>
           <div className="project-category__container">
-            {roles.map((category, i) => (
+            {roles?.length ? roles.map((category, i) => (
               <div key={"category-item-" + category + i}>{category}</div>
-            ))}
+            )) : null}
           </div>
         </div>
       </Link>

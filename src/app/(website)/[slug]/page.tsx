@@ -9,6 +9,7 @@ import { projectPageBySlug, projectPages } from "@/sanity/lib/queries";
 import { ProjectPage } from "@/types/ProjectPage";
 import "./page.scss";
 import { draftMode } from "next/headers";
+import { defaultBackground, defaultForeground } from "@/sanity/lib/constants";
 
 export async function generateStaticParams() {
   const posts: ProjectPage[] = await client.fetch(projectPages);
@@ -24,17 +25,17 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
     await sanityFetch({
       query: projectPageBySlug,
       params: params,
-      perspective: isEnabled ? "previewDrafts" : "published",
+      perspective: isEnabled ? "drafts" : "published",
     })
   ).data;
 
   return (
     <>
       <PageThemeConfig
-        backgroundCol={pageData?.pageColors.backgroundColor.hex ?? undefined}
-        foregroundCol={pageData?.pageColors.foregroundColor.hex ?? undefined}
+        backgroundCol={pageData?.pageColors?.backgroundColor.hex ?? defaultBackground}
+        foregroundCol={pageData?.pageColors?.foregroundColor.hex ?? defaultForeground}
         isNavFixed={
-          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl
+          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? true : false
         }
       />
       {pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? (
@@ -52,17 +53,17 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
           objectFit="cover"
         />
       ) : null}
-      <div className="container g-3 project-content__container">
+      <div className="container g-3 project-content__container mb-5">
         <ProjectRow>
           <ProjectColumn
-            size={pageData.columnWidth}
-            offset={pageData.columnOffset}
-            yAlignment={pageData.columnVerticalAlignment}
+            size={pageData?.columnWidth}
+            offset={pageData?.columnOffset}
+            yAlignment={pageData?.columnVerticalAlignment}
           >
-            {pageData?.title ? <h1>{pageData.title}</h1> : null}
+            {pageData?.title ? <h1 className="page-title">{pageData.title}</h1> : null}
           </ProjectColumn>
         </ProjectRow>
-        <ProjectPageBuilder pageContent={pageData.pageBuilder} />
+        <ProjectPageBuilder pageContent={pageData?.pageBuilder} />
       </div>
     </>
   );

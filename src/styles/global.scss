@@ -21,6 +21,27 @@
   cursor: none !important;
 }
 
+html {
+  
+  /* width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+    border-left: 0.5px solid var(--foreground);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--foreground);
+    border: solid var(--foreground);
+    border-width: 0.5px 0px 0.5px 0.5px;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

@@ -24,7 +24,7 @@ function ProjectColumn({
       variants={whileInView}
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, amount: 0.3 }}
+      // viewport={{ once: true, amount: 0.3 }}
       className={`pt-2 col-lg-${size} col-sm-${size >= 6 ? 12 : 6} offset-lg-${offset} ${yAlignment ? yAlignment : ""}`}
     >
       {children}

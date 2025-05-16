@@ -1,6 +1,6 @@
 import { SanityImageAssetDocument } from "next-sanity"
 
-export interface ProjectPage  {
+export interface ProjectPage {
   _createdAt: string
   _id: string
   _originalId: string
@@ -20,6 +20,7 @@ export interface ProjectPage  {
 
 export interface PageBuilder {
   rowItems: RowItem[]
+  hasPadding?: boolean
 }
 
 export interface RowItem {
@@ -27,7 +28,9 @@ export interface RowItem {
   _type: string
   alt?: string
   columnOffset: number
-  columnVerticalAlignment: string
+  columnVerticalAlignment?: | "align-self-start"
+  | "align-self-center"
+  | "align-self-end"
   columnWidth: number
   image?: SanityImageAssetDocument
   cropYoutubeUI?: boolean

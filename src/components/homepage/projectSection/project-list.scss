@@ -12,6 +12,10 @@
             &.list-view {
                 opacity: 1;
                 visibility: visible;
+
+                img {
+                    pointer-events: none;
+                }
             }
         }
     }
@@ -25,7 +29,7 @@
     }
 
     &.margin {
-        margin: 2.5rem 0;
+        margin: 1.25rem 0;
     }
 
     .project-section-images__container {
@@ -34,11 +38,12 @@
         border-radius: 2px;
         overflow: hidden;
 
+
         .project-section-image__wrapper {
             position: absolute;
             height: 100%;
             width: 100%;
-            
+
             img {
                 object-fit: cover;
                 transition: opacity 0.5s ease-in-out;
@@ -55,11 +60,13 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.2s, visibility 0.2s, border-radius 0.2s;
+            z-index: 1;
+            pointer-events: none;
 
             &.visible {
                 opacity: 1;
                 visibility: visible;
-            } 
+            }
         }
     }
 

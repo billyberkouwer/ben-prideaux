@@ -32,9 +32,9 @@ export const row = defineType({
       items: "rowItems",
     },
     prepare({ items }) {
-      const sizes = items?.map((item) => {
-        const width = parseInt(item.columnWidth);
-        const offset = parseInt(item.columnOffset);
+      const sizes = items?.map((item: { columnWidth: string, columnOffset: number }) => {
+        const width = item?.columnWidth ?? 0;
+        const offset = item?.columnOffset ?? 0;
 
         if (offset) {
           return width + offset;

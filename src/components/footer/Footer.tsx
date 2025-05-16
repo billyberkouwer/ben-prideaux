@@ -1,8 +1,5 @@
 import Link from "next/link";
 import "./footer.scss";
-import InstagramIcon from "../socialIcons/InstagramIcon";
-import EmailIcon from "../socialIcons/EmailIcon";
-import VideoIcon from "../socialIcons/VideoIcon";
 
 function Footer() {
   return (

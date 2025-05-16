@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import ProjectListItem from "./ProjectListItem";
 import { AnimatePresence, motion } from "motion/react";
-import { whileInView } from "@/contants/motion";
 import { ProjectListItemType } from "@/types/Homepage";
 
 const containerAnimations = {
@@ -48,10 +47,10 @@ export default function ProjectList({
   return (
     <motion.div
       className="project-section__container"
-      variants={whileInView}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true }}
+      // variants={whileInView}
+      // initial="initial"
+      // whileInView="animate"
+      // viewport={{ once: true }}
     >
       <AnimatePresence mode="wait">
         <motion.ul

@@ -2,7 +2,7 @@ import { SanityImageAssetDocument } from "next-sanity";
 
 export type ProjectListItemType = {
   title: string;
-  year: string;
+  date: string;
   roles: string[];
   projectImages: SanityImageAssetDocument[];
   slug: string;

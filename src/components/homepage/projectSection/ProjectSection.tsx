@@ -4,7 +4,7 @@ import { whileInView } from "@/contants/motion";
 import ProjectList from "./ProjectList";
 import "./project-section.scss";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ProjectListItemType } from "@/types/Homepage";
 
 export default function ProjectSection({
@@ -16,13 +16,24 @@ export default function ProjectSection({
   const [selectedCategory, setSelectedCategory] = useState<
     string | null | undefined
   >(undefined);
+  const categories = useMemo(() => {
+    const roles = [];
+    for (let i = 0; i < listItems?.length; i++) {
+      const itemRoles = listItems[i]?.roles;
+      for (let j = 0; j < itemRoles?.length; j++) {
+        roles.push(itemRoles[j]);
+      }
+    }
+    const rolesSet = new Set(roles);
+    return [...rolesSet];
+  }, [listItems]);
+
   return (
     <motion.section
       variants={whileInView}
-      viewport={{ once: true }}
       whileInView="animate"
       initial="initial"
-      className="project-section__container container g-3 my-5 "
+      className="project-section__container container g-3 mb-5 "
     >
       <div className="project-section-header__container row">
         <h1 className="section-title col">Projects</h1>
@@ -50,43 +61,27 @@ export default function ProjectSection({
                 name="role"
                 onClick={() => setIsList(true)}
               />
-              <label className="change-cursor" htmlFor="List View">
+              <label className="change-cursor" htmlFor="List View" style={{margin: 0}}>
                 List
               </label>
             </fieldset>
           </form>
           <form>
             <fieldset>
-              <input
-                id={"Editing"}
-                type="radio"
-                value={"Editing"}
-                name="role"
-                onClick={(e) => setSelectedCategory(e.target.value)}
-              />
-              <label className="change-cursor" htmlFor="Editing">
-                Editing
-              </label>
-              <input
-                id={"Camera"}
-                type="radio"
-                value={"Camera"}
-                name="role"
-                onClick={(e) => setSelectedCategory(e.target.value)}
-              />
-              <label className="change-cursor" htmlFor="Camera">
-                Camera
-              </label>
-              <input
-                id="Grade"
-                type="radio"
-                value="Grade"
-                name="role"
-                onClick={(e) => setSelectedCategory(e.target.value)}
-              />
-              <label className="change-cursor" htmlFor="Grade">
-                Grade
-              </label>
+              {categories.map((category) => (
+                <span key={category}>
+                  <input
+                    id={category}
+                    type="radio"
+                    value={category}
+                    name="role"
+                    onClick={(e) => setSelectedCategory((e.target as HTMLTextAreaElement).value)}
+                  />
+                  <label className="change-cursor" htmlFor={category}>
+                    {category}
+                  </label>
+                </span>
+              ))}
               <input
                 id="All"
                 type="radio"
@@ -95,7 +90,7 @@ export default function ProjectSection({
                 onClick={() => setSelectedCategory(null)}
                 defaultChecked
               />
-              <label className="change-cursor" htmlFor="All">
+              <label className="change-cursor" htmlFor="All" style={{margin: 0}}>
                 All
               </label>
             </fieldset>

@@ -9,8 +9,8 @@ export default function ProjectPageBuilder({
   return pageContent?.map((row, i) => (
     <ProjectRowBuilder
       key={"project row " + i}
-      projectRowContent={row.rowItems}
-      hasPadding={row.hasPadding}
+      projectRowContent={row?.rowItems}
+      hasPadding={row?.hasPadding}
     />
   ));
 }

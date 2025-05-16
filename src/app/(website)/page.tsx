@@ -1,65 +1,14 @@
-import PageWrapper from "@/components/page/PageWrapper";
 import ProjectSection from "@/components/homepage/projectSection/ProjectSection";
 import AboutSection from "@/components/homepage/aboutSection/AboutSection";
 import ContactSection from "@/components/homepage/contactSection/ContactSection";
 import VideoHeader from "@/components/video/Video";
 import { sanityFetch } from "@/sanity/lib/live";
-import { client } from "@/sanity/lib/client";
 import {
   homepageProjectsQuery,
   homeQuery,
-  navListQuery,
 } from "@/sanity/lib/queries";
 import PageThemeConfig from "@/components/theme/PageThemeConfig";
-
-const color = {
-  background: "black",
-  foreground: "white",
-};
-
-const listItems = [
-  {
-    title: "Some Title",
-    year: "2024",
-    categories: ["Editing", "Camera", "Shit on my Face", ":)"],
-    images: ["/images/image-1.png", "/images/image-2.png"],
-    link: "/new-route",
-  },
-  {
-    title: "Some Title",
-    year: "2024",
-    categories: ["Editing"],
-    images: ["/images/image-1.png", "/images/image-2.png"],
-    link: "/new-route",
-  },
-  {
-    title: "Some Title",
-    year: "2024",
-    categories: ["Camera"],
-    images: ["/images/image-1.png", "/images/image-2.png"],
-    link: "/",
-  },
-  {
-    title: "Some Title",
-    year: "2024",
-    categories: ["Editing"],
-    images: ["/images/image-1.png", "/images/image-2.png"],
-    link: "/",
-  },
-];
-
-export const videoLinks = [
-  { url: "https://youtu.be/Ks1j-M0300M", ratio: { x: 16, y: 9 } },
-  { url: "https://vimeo.com/347119375?share=copy", ratio: { x: 16, y: 9 } },
-  {
-    url: "https://www.youtube.com/watch?v=8yKZh_z1Md4&ab_channel=BenPrideaux",
-    ratio: { x: 16, y: 9 },
-  },
-  {
-    url: "https://vimeo.com/944547199/d9c2b6f1b2?share=copy",
-    ratio: { x: 4, y: 3 },
-  },
-];
+import { defaultBackground, defaultForeground } from "@/sanity/lib/constants";
 
 export default async function Home() {
   const pageData = (
@@ -72,15 +21,13 @@ export default async function Home() {
     await sanityFetch({ query: homepageProjectsQuery })
   ).data;
 
-  console.log(projectsData)
-
   return (
     <>
       <PageThemeConfig
-        backgroundCol={pageData?.pageColors.backgroundColor.hex ?? undefined}
-        foregroundCol={pageData?.pageColors.foregroundColor.hex ?? undefined}
+        backgroundCol={pageData?.pageColors?.backgroundColor.hex ?? defaultBackground}
+        foregroundCol={pageData?.pageColors?.foregroundColor.hex ?? defaultForeground}
         isNavFixed={
-          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl
+          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? true : false
         }
       />
       {pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? (

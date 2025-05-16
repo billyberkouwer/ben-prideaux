@@ -2,7 +2,6 @@
 
 import { whileInView } from "@/contants/motion";
 import { motion } from "motion/react";
-import Image from "next/image";
 import "./about-section.scss";
 import {
   PortableText,
@@ -23,8 +22,8 @@ function AboutSection({
       initial="initial"
       whileInView="animate"
       variants={whileInView}
-      viewport={{ once: true }}
-      className="about-section__container col-lg-6"
+      // viewport={{ once: true }}
+      className="about-section__container col-lg-6 mt-5"
     >
       <h2 className="section-title">About</h2>
       <div className="about-text__container">

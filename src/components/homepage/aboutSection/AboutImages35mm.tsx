@@ -1,7 +1,7 @@
 import { SanityImageAssetDocument } from "next-sanity";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { motion, spring, useAnimate } from "motion/react";
+import { useState } from "react";
+import { motion, spring } from "motion/react";
 import "./about-images-35mm.scss";
 
 export default function AboutImages35mm({
