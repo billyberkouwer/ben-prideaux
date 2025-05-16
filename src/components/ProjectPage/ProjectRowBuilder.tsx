@@ -42,8 +42,8 @@ export default function ProjectRowBuilder({
                       " / " +
                       item.image.metadata.dimensions.height
                     }
-                    src={item.image.url}
-                    alt={item.image.alt}
+                    src={item.image?.url}
+                    alt={item.image?.alt}
                   />
                 </ProjectColumn>
               );
