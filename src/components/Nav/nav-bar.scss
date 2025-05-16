@@ -11,8 +11,8 @@
     padding: 0.5rem;
     @include border-bottom;
     z-index: 9;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(40);
+    background-color: rgba(235, 235, 235, 0.1);
+    backdrop-filter: blur(20px);
     transition: color 0.5s, border-color 0.5s, left 0.5s;
     text-transform: uppercase;
     font-weight: bold;
