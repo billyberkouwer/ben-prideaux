@@ -27,7 +27,7 @@ function PageThemeConfig({
     setCssVariable("foreground", foregroundCol);
   }, [backgroundCol, foregroundCol]);
 
-  return null;
+  return <></>;
 }
 
 export default PageThemeConfig;

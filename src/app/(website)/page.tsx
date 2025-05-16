@@ -29,10 +29,10 @@ export default async function Home() {
     <>
       <PageThemeConfig
         backgroundCol={
-          pageData?.pageColors?.backgroundColor.hex ?? defaultBackground
+          pageData?.pageColors?.backgroundColor?.hex ?? defaultBackground
         }
         foregroundCol={
-          pageData?.pageColors?.foregroundColor.hex ?? defaultForeground
+          pageData?.pageColors?.foregroundColor?.hex ?? defaultForeground
         }
         isNavFixed={
           pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl

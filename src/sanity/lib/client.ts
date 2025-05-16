@@ -1,14 +1,15 @@
 import { createClient } from 'next-sanity'
 
-import { apiVersion, dataset, projectId } from '../env'
+import { apiVersion, dataset, origin, projectId, studioSlug } from '../env'
+import { readToken } from './token';
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false,
+  useCdn: true,
+  token: readToken,
   stega: {
-    enabled: process.env.NEXT_PUBLIC_VERCEL_ENV === "preview",
-    studioUrl: "/admin",
+    studioUrl: origin + studioSlug,
   },
 });

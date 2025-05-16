@@ -21,21 +21,22 @@ export async function generateStaticParams() {
 
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { isEnabled } = await draftMode();
-  const pageData = (
-    await sanityFetch({
-      query: projectPageBySlug,
-      params: params,
-      perspective: isEnabled ? "drafts" : "published",
-    })
-  ).data;
+  const pageData = (await sanityFetch({ query: projectPageBySlug, params }))
+    .data;
 
   return (
     <>
       <PageThemeConfig
-        backgroundCol={pageData?.pageColors?.backgroundColor.hex ?? defaultBackground}
-        foregroundCol={pageData?.pageColors?.foregroundColor.hex ?? defaultForeground}
+        backgroundCol={
+          pageData?.pageColors?.backgroundColor?.hex ?? defaultBackground
+        }
+        foregroundCol={
+          pageData?.pageColors?.foregroundColor?.hex ?? defaultForeground
+        }
         isNavFixed={
-          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? true : false
+          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl
+            ? true
+            : false
         }
       />
       {pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? (
@@ -60,7 +61,9 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
             offset={pageData?.columnOffset}
             yAlignment={pageData?.columnVerticalAlignment}
           >
-            {pageData?.title ? <h1 className="page-title">{pageData.title}</h1> : null}
+            {pageData?.title ? (
+              <h1 className="page-title">{pageData.title}</h1>
+            ) : null}
           </ProjectColumn>
         </ProjectRow>
         <ProjectPageBuilder pageContent={pageData?.pageBuilder} />

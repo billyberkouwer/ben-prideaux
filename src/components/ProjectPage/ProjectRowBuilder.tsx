@@ -37,11 +37,7 @@ export default function ProjectRowBuilder({
                   yAlignment={item.columnVerticalAlignment}
                 >
                   <ProjectImage
-                    aspectRatio={
-                      item.image.metadata.dimensions.width +
-                      " / " +
-                      item.image.metadata.dimensions.height
-                    }
+                    aspectRatio={`${item.image?.metadata.dimensions.aspectRatio} / 1`}
                     src={item.image?.url}
                     alt={item.image?.alt}
                   />

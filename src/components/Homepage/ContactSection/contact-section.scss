@@ -1,5 +1,11 @@
 .contact-section__container {
 
+    ul {
+        list-style-type: disc;
+        margin-left: 1rem;
+        padding: unset;
+    }
+
     /* Remove default margin */
     form,
     input,
