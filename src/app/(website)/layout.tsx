@@ -7,7 +7,7 @@ import { SanityLive } from "@/sanity/lib/live";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import PageWrapper from "@/components/page/PageWrapper";
-import { DisableDraftMode } from "@/components/draftMode/DisableDraftMode";
+import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
 
 const GNU = localFont({
   src: "./fonts/GNUGrotesk-VF.ttf",

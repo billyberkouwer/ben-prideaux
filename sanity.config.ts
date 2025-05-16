@@ -33,7 +33,7 @@ export default defineConfig({
     visionTool({ defaultApiVersion: apiVersion }),
     presentationTool({
       previewUrl: {
-        origin: "http://localhost:3000",
+        origin: process.env.NEXT_PUBLIC_ORIGIN,
         preview: "/",
         previewMode: {
           enable: "/api/draft-mode/enable",

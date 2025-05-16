@@ -4,7 +4,7 @@ import "@/styles/bootstrap/bootstrap-grid.scss";
 import { SanityLive } from "@/sanity/lib/live";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
-import { DisableDraftMode } from "@/components/draftMode/DisableDraftMode";
+import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
 
 export const metadata: Metadata = {
   title: "Create Next App",
