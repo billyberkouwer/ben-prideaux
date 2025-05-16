@@ -3,31 +3,41 @@ import AboutSection from "@/components/Homepage/AboutSection/AboutSection";
 import ContactSection from "@/components/Homepage/ContactSection/ContactSection";
 import VideoHeader from "@/components/Video/Video";
 import { sanityFetch } from "@/sanity/lib/live";
-import {
-  homepageProjectsQuery,
-  homeQuery,
-} from "@/sanity/lib/queries";
+import { homepageProjectsQuery, homeQuery } from "@/sanity/lib/queries";
 import PageThemeConfig from "@/components/Theme/PageThemeConfig";
 import { defaultBackground, defaultForeground } from "@/sanity/lib/constants";
+import { draftMode } from "next/headers";
 
 export default async function Home() {
+  const { isEnabled } = await draftMode();
+
   const pageData = (
     await sanityFetch({
       query: homeQuery,
+      perspective: isEnabled ? "drafts" : "published",
     })
   ).data;
 
   const projectsData = await (
-    await sanityFetch({ query: homepageProjectsQuery })
+    await sanityFetch({
+      query: homepageProjectsQuery,
+      perspective: isEnabled ? "drafts" : "published",
+    })
   ).data;
 
   return (
     <>
       <PageThemeConfig
-        backgroundCol={pageData?.pageColors?.backgroundColor.hex ?? defaultBackground}
-        foregroundCol={pageData?.pageColors?.foregroundColor.hex ?? defaultForeground}
+        backgroundCol={
+          pageData?.pageColors?.backgroundColor.hex ?? defaultBackground
+        }
+        foregroundCol={
+          pageData?.pageColors?.foregroundColor.hex ?? defaultForeground
+        }
         isNavFixed={
-          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? true : false
+          pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl
+            ? true
+            : false
         }
       />
       {pageData?.enableVideoHeader && pageData.videoHeader?.videoUrl ? (
