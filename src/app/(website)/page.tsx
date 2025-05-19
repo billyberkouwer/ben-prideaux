@@ -22,6 +22,7 @@ export default async function Home() {
     await sanityFetch({
       query: homepageProjectsQuery,
       perspective: isEnabled ? "drafts" : "published",
+      tags: ["projectPage"]
     })
   ).data;
 

@@ -1,8 +1,8 @@
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import { parseBody } from 'next-sanity/webhook'
 
-type WebhookPayload = { path?: string }
+type WebhookPayload = { path?: string, _type?: string }
 
 export async function POST(req: NextRequest) {
     try {
@@ -18,8 +18,6 @@ export async function POST(req: NextRequest) {
             process.env.SANITY_REVALIDATE_SECRET,
         )
 
-        console.log(body)
-
         if (!isValidSignature) {
             const message = 'Invalid signature'
             return new Response(JSON.stringify({ message, isValidSignature, body }), {
@@ -31,7 +29,15 @@ export async function POST(req: NextRequest) {
         }
 
         revalidatePath(body.path)
-        const message = `Updated route: ${body.path}`
+
+        let message = "";
+
+        if (body._type === "projectPage") {
+            message += `Updated route: ${body.path}`
+            revalidateTag(body._type)
+        }
+
+        message += `, Updated route: ${body.path}`
         return NextResponse.json({ body, message })
     } catch (err) {
         console.error(err)
