@@ -26,6 +26,18 @@ export const home = defineType({
       type: "pageColors"
     }),
     defineField({
+      type: "boolean",
+      title: "Enable project video header?",
+      name: "enableVideoHeader",
+      initialValue: false,
+    }),
+    defineField({
+      type: "videoHeader",
+      name: "videoHeader",
+      title: "Video Header",
+      hidden: ({ document }) => (document?.enableVideoHeader ? false : true),
+    }),
+    defineField({
       name: "aboutText",
       type: "array",
       of: [{ type: "block" }],

@@ -21,12 +21,12 @@ export default async function RootLayout({
       <body>
         {children}
         <SanityLive />
-        {(await draftMode()).isEnabled && (
+        {(await draftMode()).isEnabled ? (
           <>
             <DisableDraftMode />
             <VisualEditing />
           </>
-        )}
+        ) : null}
       </body>
     </html>
   );

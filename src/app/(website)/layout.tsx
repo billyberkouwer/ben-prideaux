@@ -37,12 +37,12 @@ export default async function RootLayout({
       <body className={`${cormorant.variable} ${GNU.variable}`}>
         <PageWrapper navBar={<NavBar />}>{children}</PageWrapper>
         <SanityLive />
-        {(await draftMode()).isEnabled && (
+        {(await draftMode()).isEnabled ? (
           <>
             <DisableDraftMode />
             <VisualEditing />
           </>
-        )}
+        ) : null}
       </body>
     </html>
   );

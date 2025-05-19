@@ -21,8 +21,14 @@ export async function generateStaticParams() {
 
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { isEnabled } = await draftMode();
-  const pageData = (await sanityFetch({ query: projectPageBySlug, params }))
-    .data;
+  
+  const pageData = (
+    await sanityFetch({
+      query: projectPageBySlug,
+      params,
+      perspective: isEnabled ? "drafts" : "published",
+    })
+  ).data;
 
   return (
     <>
