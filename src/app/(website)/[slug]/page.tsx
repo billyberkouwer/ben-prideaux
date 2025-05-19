@@ -60,7 +60,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
           objectFit="cover"
         />
       ) : null}
-      <div className="container g-3 project-content__container mb-5">
+      <div className="container project-content__container mb-5">
         <ProjectRow>
           <ProjectColumn
             size={pageData?.columnWidth}

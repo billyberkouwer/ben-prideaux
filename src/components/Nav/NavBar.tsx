@@ -7,6 +7,7 @@ import NavContainer from "./NavContainer";
 import { sanityFetch } from "@/sanity/lib/live";
 import { navListQuery, navSiteDataQuery } from "@/sanity/lib/queries";
 import PageTitle from "./PageTitle";
+import MenuList from "./MenuList";
 
 export default async function NavBar() {
   const navMenuItems: NavMenuItem[] = (
@@ -37,16 +38,7 @@ export default async function NavBar() {
           <MenuButton />
         </span>
       </div>
-      <div className="menu-list__container">
-        <h4>Index</h4>
-        <ul>
-          {navMenuItems?.map((menuItem, i) => (
-            <li key={menuItem.title + i}>
-              <Link href={"/" + menuItem.slug}>{menuItem.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <MenuList navMenuItems={navMenuItems} />
     </NavContainer>
   );
 }

@@ -35,7 +35,7 @@ export default function ProjectSection({
       variants={whileInView}
       whileInView="animate"
       initial="initial"
-      className="project-section__container container g-3 mb-5 "
+      className="project-section__container container mb-5 "
     >
       <div className="project-section-header__container row">
         <h1 className="section-title col">Projects</h1>

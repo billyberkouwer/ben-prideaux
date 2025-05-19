@@ -1,11 +1,8 @@
 "use client";
 
+import { setCssVariable } from "@/helpers";
 import { NavColorContext } from "@/utils/context";
 import { useContext, useEffect } from "react";
-
-function setCssVariable(variableName: string, value: string) {
-  document.documentElement.style.setProperty(`--${variableName}`, value);
-}
 
 function PageThemeConfig({
   backgroundCol = "white",

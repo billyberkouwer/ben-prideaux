@@ -35,7 +35,7 @@ function PageWrapper({
       }}
     >
       <Cursor />
-      <div className={`page__wrapper ${isMenuOpen ? "open" : ""}`}>
+      <div className={`page__wrapper ${isMenuOpen ? "open" : ""} ${isNavFixed ? "" : "offset-top"}`}>
         {navBar}
         <div
           className="page-content__container"

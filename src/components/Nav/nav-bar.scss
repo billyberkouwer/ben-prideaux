@@ -3,10 +3,9 @@
 @use "../../styles/_media-queries.scss" as *;
 
 .nav-bar__container {
-    position: sticky;
+    position: fixed;
     width: 100%;
     top: 0;
-    left: 0;
     box-sizing: border-box;
     padding: 0.5rem;
     @include border-bottom;
@@ -16,6 +15,19 @@
     transition: color 0.5s, border-color 0.5s, left 0.5s;
     text-transform: uppercase;
     font-weight: bold;
+    left: 0;
+
+    &.visible {
+        left: $nav-left-sm;
+
+        @include md {
+            left: $nav-left-md;
+        }
+
+        @include xl {
+            left: $nav-left-lg;
+        }
+    }
 
     &.nav-light {
         color: var(--background);
