@@ -1,8 +1,6 @@
 "use client";
 
-import { NavColorContext } from "@/utils/context";
 import Link from "next/link";
-import { useContext } from "react";
 
 function MenuList({ navMenuItems }: { navMenuItems: NavMenuItem[] | null }) {
   return (
