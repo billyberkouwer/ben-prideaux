@@ -5,6 +5,7 @@
         a {
             color: var(--background);
             background-color: var(--foreground);
+            border-radius: 2px;
         }
 
         .project-section-images__container {
@@ -21,10 +22,9 @@
     }
 
     a {
-        transition: border-radius 0.5s, color 0.2s, background-color 0.2s;
+        transition: color 0.2s, background-color 0.2s;
         display: block;
         border-bottom: 0.5px solid var(--foreground);
-        border-radius: 2px;
         overflow: hidden;
     }
 

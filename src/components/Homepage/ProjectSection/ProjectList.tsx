@@ -47,7 +47,7 @@ export default function ProjectList({
 
   return (
     <motion.div
-      className="project-section__container"
+      className="project-section__container row"
       // variants={whileInView}
       // initial="initial"
       // whileInView="animate"
@@ -60,7 +60,7 @@ export default function ProjectList({
           animate="animate"
           exit="exit"
           variants={containerAnimations}
-          className={`project-list__container row ${isList ? "gy-10" : "g-2"}`}
+          className={`project-list__container row ${isList ? "gy-10 gx-0" : "g-2"}`}
         >
           {activeProjects?.length
             ? activeProjects.map((projectItem, i) =>
