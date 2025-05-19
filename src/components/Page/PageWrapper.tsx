@@ -4,6 +4,7 @@ import { NavColorContext } from "@/utils/context";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
 import Cursor from "../Cursor/Cursor";
 import { usePathname } from "next/navigation";
+import "./page-wrapper.scss"
 
 function PageWrapper({
   children,
