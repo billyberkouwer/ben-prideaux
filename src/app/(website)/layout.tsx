@@ -9,6 +9,7 @@ import { draftMode } from "next/headers";
 import PageWrapper from "@/components/Page/PageWrapper";
 import { DisableDraftMode } from "@/components/DisableDraftMode/DisableDraftMode";
 import NavBar from "@/components/Nav/NavBar";
+import Footer from "@/components/Footer/Footer";
 
 const GNU = localFont({
   src: "./fonts/GNUGrotesk-VF.ttf",
@@ -35,7 +36,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${GNU.variable}`}>
-        <PageWrapper navBar={<NavBar />}>{children}</PageWrapper>
+        <PageWrapper footer={<Footer />} navBar={<NavBar />}>
+          {children}
+        </PageWrapper>
         <SanityLive />
         {(await draftMode()).isEnabled ? (
           <>

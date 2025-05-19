@@ -3,24 +3,24 @@
 import { whileInView } from "@/contants/motion";
 import { motion } from "motion/react";
 import "./contact-section.scss";
+import { PortableText, PortableTextBlock } from "next-sanity";
 
-function ContactSection() {
+function ContactSection({
+  text,
+}: {
+  text: PortableTextBlock[] | null;
+}) {
   return (
     <motion.section
       initial="initial"
       whileInView="animate"
       variants={whileInView}
       // viewport={{ once: true }}
-      className="contact-section__container container col-lg-6 col mt-5"
+      className="contact-section__container container col-lg-6 col mt-5 --paragraph-block-styles"
     >
       <h2 className="section-title">Contact</h2>
       <div className="contact-text__container g-0">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          cupiditate quisquam adipisci unde aperiam exercitationem dolores,
-          laborum distinctio consequatur eligendi impedit, totam aspernatur
-          nulla architecto molestiae explicabo eius? Blanditiis, asperiores?
-        </p>
+        {text ? <PortableText value={text} /> : null}
       </div>
       <form className="row g-0 gy-3">
         <div className="col-12 input__wrapper">

@@ -3,15 +3,16 @@
 import { NavColorContext } from "@/utils/context";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
 import Cursor from "../Cursor/Cursor";
-import Footer from "../Footer/Footer";
 import { usePathname } from "next/navigation";
 
 function PageWrapper({
   children,
   navBar,
+  footer,
 }: {
   children: ReactNode;
   navBar: ReactElement;
+  footer: ReactElement;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavLight, setIsNavLight] = useState(false);
@@ -46,7 +47,7 @@ function PageWrapper({
         >
           <>{children}</>
         </div>
-        <Footer />
+        {footer}
       </div>
     </NavColorContext.Provider>
   );

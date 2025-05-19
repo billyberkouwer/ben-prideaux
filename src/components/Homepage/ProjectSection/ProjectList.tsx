@@ -21,28 +21,29 @@ const containerAnimations = {
 export default function ProjectList({
   projectItems,
   isList,
-  selectedCategory
+  selectedCategory,
 }: {
-  projectItems: ProjectListItemType[];
+  projectItems: ProjectListItemType[] | null;
   isList: boolean;
   selectedCategory: string | null | undefined;
 }) {
-  const activeProjects = useMemo(
-    () =>
-      selectedCategory === undefined || selectedCategory === null
-        ? projectItems
-        : projectItems.filter((proj) => {
-            for (let i = 0; i < proj.roles.length; i++) {
-              if (
-                proj.roles[i].toLowerCase() ===
-                selectedCategory.toLowerCase()
-              ) {
-                return true;
-              }
+  const activeProjects = useMemo(() => {
+    if (projectItems?.length) {
+      if (selectedCategory === undefined || selectedCategory === null) {
+        return projectItems;
+      } else {
+        return projectItems.filter((proj) => {
+          for (let i = 0; i < proj.roles.length; i++) {
+            if (
+              proj.roles[i].toLowerCase() === selectedCategory.toLowerCase()
+            ) {
+              return true;
             }
-          }),
-    [projectItems, selectedCategory]
-  );
+          }
+        });
+      }
+    }
+  }, [projectItems, selectedCategory]);
 
   return (
     <motion.div
@@ -61,23 +62,29 @@ export default function ProjectList({
           variants={containerAnimations}
           className={`project-list__container row ${isList ? "gy-10" : "g-2"}`}
         >
-          {activeProjects.map((projectItem, i) =>
-            isList ? (
-              <ProjectListItem
-                key={"list-item-project-" + "is-list" + projectItem.title + i}
-                isList={true}
-                {...projectItem}
-                selectedCategory={selectedCategory}
-              />
-            ) : (
-              <ProjectListItem
-                key={"list-item-project-" + "is-block" + projectItem.title + i}
-                isList={false}
-                {...projectItem}
-                selectedCategory={selectedCategory}
-              />
-            )
-          )}
+          {activeProjects?.length
+            ? activeProjects.map((projectItem, i) =>
+                isList ? (
+                  <ProjectListItem
+                    key={
+                      "list-item-project-" + "is-list" + projectItem.title + i
+                    }
+                    isList={true}
+                    {...projectItem}
+                    selectedCategory={selectedCategory}
+                  />
+                ) : (
+                  <ProjectListItem
+                    key={
+                      "list-item-project-" + "is-block" + projectItem.title + i
+                    }
+                    isList={false}
+                    {...projectItem}
+                    selectedCategory={selectedCategory}
+                  />
+                )
+              )
+            : null}
         </motion.ul>
       </AnimatePresence>
     </motion.div>

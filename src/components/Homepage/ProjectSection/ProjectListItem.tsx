@@ -39,7 +39,10 @@ export default function ProjectListItem({
   const isHovered = useRef(false);
   const [imageIndex, setImageIndex] = useState(0);
   const year = useMemo(() => {
-    return new Date(date).getFullYear();
+    if (date) {
+      return new Date(date).getFullYear();
+    }
+    return new Date().getFullYear();
   }, [date]);
 
   useEventListener("mousemove", (e) => {
@@ -78,34 +81,38 @@ export default function ProjectListItem({
               : { position: "relative" }
           }
         >
-          {projectImages?.length ? projectImages.map((image, i) => (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              key={image._id + i}
-              className="project-section-image__wrapper"
-            >
-              <Image
-                alt={image?.alt ?? "Image " + (i + 1)}
-                src={image?.url}
-                fill
-                loading="eager"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
-                style={{
-                  opacity: imageIndex === i ? 1 : 0,
-                }}
-              />
-            </motion.div>
-          )) : null}
+          {projectImages?.length
+            ? projectImages.map((image, i) => (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  key={image._id + i}
+                  className="project-section-image__wrapper"
+                >
+                  <Image
+                    alt={image?.alt ?? "Image " + (i + 1)}
+                    src={image?.url}
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
+                    style={{
+                      opacity: imageIndex === i ? 1 : 0,
+                    }}
+                  />
+                </motion.div>
+              ))
+            : null}
         </motion.div>
         <div className="project-info__container">
           <h4 className="project-title">{title}</h4>
           <span className="project-year">{year}</span>
           <div className="project-category__container">
-            {roles?.length ? roles.map((category, i) => (
-              <div key={"category-item-" + category + i}>{category}</div>
-            )) : null}
+            {roles?.length
+              ? roles.map((category, i) => (
+                  <div key={"category-item-" + category + i}>{category}</div>
+                ))
+              : null}
           </div>
         </div>
       </Link>

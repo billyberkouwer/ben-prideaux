@@ -18,11 +18,11 @@ export default async function Home() {
     })
   ).data;
 
-  const projectsData = await (
+  const projectsData = (
     await sanityFetch({
       query: homepageProjectsQuery,
       perspective: isEnabled ? "drafts" : "published",
-      tags: ["projectPage"]
+      tags: ["projectPage"],
     })
   ).data;
 
@@ -60,10 +60,10 @@ export default async function Home() {
       <div className="container margin-bottom">
         <div className="row">
           <AboutSection
-            images={pageData.aboutImages}
-            text={pageData.aboutText}
+            images={pageData?.aboutImages}
+            text={pageData?.aboutText}
           />
-          <ContactSection />
+          <ContactSection text={pageData?.contactText} />
         </div>
       </div>
     </>

@@ -1,12 +1,18 @@
 import Link from "next/link";
 import "./footer.scss";
+import { sanityFetch } from "@/sanity/lib/live";
+import { navSiteDataQuery } from "@/sanity/lib/queries";
 
-function Footer() {
+async function Footer() {
+  const navSiteData = await (
+    await sanityFetch({ query: navSiteDataQuery })
+  ).data;
+
   return (
     <footer className="container ">
       <div className="row pb-2">
-        <span className="col align-self-end">
-          © {new Date().getFullYear()} Ben Prideaux
+        <span className="col align-self-end copyright">
+          © 2022—{new Date().getFullYear()} {navSiteData?.title}
         </span>
         <div className="social-links__container col align-self-end">
           <Link className="social-link" href="">

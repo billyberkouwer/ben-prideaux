@@ -14,7 +14,7 @@ function AboutSection({
   images,
   text,
 }: {
-  images: SanityImageAssetDocument[];
+  images: SanityImageAssetDocument[] | null;
   text: PortableTextBlock[];
 }) {
   return (
@@ -26,7 +26,7 @@ function AboutSection({
       className="about-section__container col-lg-6 mt-5"
     >
       <h2 className="section-title">About</h2>
-      <div className="about-text__container">
+      <div className="about-text__container --paragraph-block-styles">
         <PortableText value={text} />
       </div>
       <AboutImages images={images} />

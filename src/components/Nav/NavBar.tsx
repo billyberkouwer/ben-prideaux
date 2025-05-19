@@ -33,7 +33,9 @@ export default async function NavBar() {
         <div className="col-2">
           <PageTitle menuItems={navMenuItems} />
         </div>
-        <MenuButton />
+        <span className="menu-button__wrapper col-2 offset-4">
+          <MenuButton />
+        </span>
       </div>
       <div className="menu-list__container">
         <h4>Index</h4>

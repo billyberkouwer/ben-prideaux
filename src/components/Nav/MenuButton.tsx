@@ -83,23 +83,21 @@ export default function MenuButton() {
   }, []);
 
   return (
-    <span className="menu-button__wrapper col-1 offset-5">
-      <button
-        onClick={() => {
-          setIsMenuOpen(!isMenuOpen);
-        }}
-      >
-        <LottieLoader
-          autoplay
-          width={20}
-          height={20}
-          speed={4}
-          lottieJson={lottieJson}
-          play={isMenuOpen ? "forward" : "reverse"}
-          setFrame={setFrame}
-          mode={isMenuOpen ? "forward" : "reverse"}
-        />
-      </button>
-    </span>
+    <button
+      onClick={() => {
+        setIsMenuOpen(!isMenuOpen);
+      }}
+    >
+      <LottieLoader
+        autoplay
+        width={20}
+        height={20}
+        speed={4}
+        lottieJson={lottieJson}
+        play={isMenuOpen ? "forward" : "reverse"}
+        setFrame={setFrame}
+        mode={isMenuOpen ? "forward" : "reverse"}
+      />
+    </button>
   );
 }

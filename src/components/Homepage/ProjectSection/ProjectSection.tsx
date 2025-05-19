@@ -10,7 +10,7 @@ import { ProjectListItemType } from "@/types/Homepage";
 export default function ProjectSection({
   listItems,
 }: {
-  listItems: ProjectListItemType[];
+  listItems: ProjectListItemType[] | null;
 }) {
   const [isList, setIsList] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<
@@ -18,14 +18,16 @@ export default function ProjectSection({
   >(undefined);
   const categories = useMemo(() => {
     const roles = [];
-    for (let i = 0; i < listItems?.length; i++) {
-      const itemRoles = listItems[i]?.roles;
-      for (let j = 0; j < itemRoles?.length; j++) {
-        roles.push(itemRoles[j]);
+    if (listItems?.length) {
+      for (let i = 0; i < listItems?.length; i++) {
+        const itemRoles = listItems[i]?.roles;
+        for (let j = 0; j < itemRoles?.length; j++) {
+          roles.push(itemRoles[j]);
+        }
       }
+      const rolesSet = new Set(roles);
+      return [...rolesSet];
     }
-    const rolesSet = new Set(roles);
-    return [...rolesSet];
   }, [listItems]);
 
   return (
@@ -61,27 +63,37 @@ export default function ProjectSection({
                 name="role"
                 onClick={() => setIsList(true)}
               />
-              <label className="change-cursor" htmlFor="List View" style={{margin: 0}}>
+              <label
+                className="change-cursor"
+                htmlFor="List View"
+                style={{ margin: 0 }}
+              >
                 List
               </label>
             </fieldset>
           </form>
           <form>
             <fieldset>
-              {categories.map((category) => (
-                <span key={category}>
-                  <input
-                    id={category}
-                    type="radio"
-                    value={category}
-                    name="role"
-                    onClick={(e) => setSelectedCategory((e.target as HTMLTextAreaElement).value)}
-                  />
-                  <label className="change-cursor" htmlFor={category}>
-                    {category}
-                  </label>
-                </span>
-              ))}
+              {categories?.length
+                ? categories.map((category) => (
+                    <span key={category}>
+                      <input
+                        id={category}
+                        type="radio"
+                        value={category}
+                        name="role"
+                        onClick={(e) =>
+                          setSelectedCategory(
+                            (e.target as HTMLTextAreaElement).value
+                          )
+                        }
+                      />
+                      <label className="change-cursor" htmlFor={category}>
+                        {category}
+                      </label>
+                    </span>
+                  ))
+                : null}
               <input
                 id="All"
                 type="radio"
@@ -90,7 +102,11 @@ export default function ProjectSection({
                 onClick={() => setSelectedCategory(null)}
                 defaultChecked
               />
-              <label className="change-cursor" htmlFor="All" style={{margin: 0}}>
+              <label
+                className="change-cursor"
+                htmlFor="All"
+                style={{ margin: 0 }}
+              >
                 All
               </label>
             </fieldset>

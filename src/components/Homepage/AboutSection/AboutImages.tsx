@@ -13,7 +13,11 @@ const variants = {
   },
 };
 
-function AboutImages({ images }: { images?: SanityImageAssetDocument[] }) {
+function AboutImages({
+  images,
+}: {
+  images: SanityImageAssetDocument[] | null;
+}) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -38,30 +42,34 @@ function AboutImages({ images }: { images?: SanityImageAssetDocument[] }) {
     };
   }, [images]);
 
-  return (
-    <div className="about-image__container">
-      {images?.length
-        ? images.map((image, i) => (
-            <motion.div
-              className="about-image__wrapper"
-              key={"about wrapper" + image.url + i}
-              style={{
-                aspectRatio: `${image.metadata.dimensions.width} / ${image.metadata.dimensions.height}`,
-              }}
-              variants={variants}
-              animate={i === currentImageIndex ? "animate" : "initial"}
-            >
-              <Image
-                src={image.url}
-                alt={"about image " + i}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
-              />
-            </motion.div>
-          ))
-        : null}
-    </div>
-  );
+  if (images?.length) {
+    return (
+      <div className="about-image__container">
+        {images?.length
+          ? images.map((image, i) => (
+              <motion.div
+                className="about-image__wrapper"
+                key={"about wrapper" + image.url + i}
+                style={{
+                  aspectRatio: `${image.metadata.dimensions.width} / ${image.metadata.dimensions.height}`,
+                }}
+                variants={variants}
+                animate={i === currentImageIndex ? "animate" : "initial"}
+              >
+                <Image
+                  src={image.url}
+                  alt={"about image " + i}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 33vw"
+                />
+              </motion.div>
+            ))
+          : null}
+      </div>
+    );
+  }
+
+  return null
 }
 
 export default AboutImages;

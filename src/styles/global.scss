@@ -22,7 +22,6 @@
 }
 
 html {
-  
   /* width */
   ::-webkit-scrollbar {
     width: 6px;
@@ -55,6 +54,18 @@ body {
 p {
   font-family: var(--font-cormorant);
   font-size: 1.2rem;
+}
+
+.--paragraph-block-styles {
+  p,
+  li {
+    font-family: var(--font-cormorant);
+    font-size: 1.2rem;
+  }
+
+  li {
+    margin-left: 0.5rem;
+  }
 }
 
 a {
