@@ -58,7 +58,7 @@ export default function ProjectListItem({
 
   return (
     <motion.li
-      className={`project-item__container  ${isList ? "col-12 margin" : "col-lg-4"}`}
+      className={`project-item__container ${isList ? "col-12 my-5" : "col-lg-4 col-md-6 col-12"}`}
       variants={listAnimations}
       ref={projectItemRef}
       onMouseEnter={() => {

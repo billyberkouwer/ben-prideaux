@@ -17,6 +17,11 @@
     font-weight: bold;
     left: 0;
 
+    font-size: 0.8rem;
+    @include md {
+        font-size: 1rem;
+    }
+
     &.visible {
         left: $nav-left-sm;
 
@@ -66,13 +71,18 @@
         border-left: 0.5px solid var(--foreground);
 
         li {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             font-weight: 100;
             border-bottom: 0.5px var(--foreground) solid;
             margin-bottom: 0.6rem;
             transition: background 0.2s, color 0.2s;
             color: var(--foreground);
             border-radius: 0px;
+
+            @include md {
+                font-size: 1.6rem;
+
+            }
 
             a {
                 width: 100%;
@@ -88,6 +98,11 @@
 
         h4 {
             margin: 7px 0;
+            font-size: 0.8rem;
+
+            @include md {
+                font-size: 1rem;
+            }
         }
 
         @include md {

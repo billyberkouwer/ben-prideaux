@@ -1,4 +1,5 @@
 @use "@/styles/_mixins.scss" as *;
+@use "@/styles/_media-queries.scss" as *;
 
 .project-item__container {
     &:hover {
@@ -76,20 +77,30 @@
 
         .project-title {
             margin: 0;
-            font-size: 3rem;
-            line-height: 2.5rem;
+            font-size: 1.75rem;
+            line-height: 1.75rem;
             padding-top: 0.2rem;
             text-transform: uppercase;
             font-weight: 100;
             align-self: flex-end;
             word-wrap: break-word;
             grid-column: 1 / 10;
+
+            @include md {
+                font-size: 2.5rem;
+                line-height: 2.5rem;
+            }
         }
 
         .project-year {
             align-self: flex-end;
             text-transform: uppercase;
             grid-column: 10 / 11;
+            font-size: 0.75rem;
+
+            @include md {
+                font-size: 1rem;
+            }
         }
 
         .project-category__container {
@@ -103,6 +114,12 @@
             gap: 0.25rem;
             grid-column: 11 / 13;
             padding: 0 0.25rem;
+
+            font-size: 0.75rem;
+
+            @include md {
+                font-size: 1rem;
+            }
         }
     }
 }

@@ -1,7 +1,9 @@
+@import '@/styles/_media-queries.scss';
+
 .project-section__container {
     position: relative;
     box-sizing: border-box;
-    margin: 0.5rem 0;
+    // margin: 0.5rem 0;
 }
 
 fieldset {
@@ -17,8 +19,13 @@ fieldset {
         border: 1px solid var(--foreground);
         border-radius: 10px;
         appearance: none;
-        width: 0.75rem;
-        height: 0.75rem;
+        width: 0.6rem;
+        height: 0.6rem;
+
+        @include md {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
 
         &:checked {
             // accent-color: var(--background);
@@ -27,7 +34,19 @@ fieldset {
     }
 
     label {
+        font-size: 0.75rem;
         margin-right: 0.5rem;
         text-transform: uppercase;
+
+        @include md {
+            font-size: 1rem;
+        }
+    }
+}
+
+.change-view__options {
+    display: none;
+    @include md {
+        display: block;
     }
 }

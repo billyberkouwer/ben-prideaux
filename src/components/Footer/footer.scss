@@ -1,3 +1,5 @@
+@use "@/styles/_media-queries.scss" as *;
+
 footer {
     position: relative;
 }
@@ -9,10 +11,23 @@ footer {
     .social-link {
         position: relative;
         border-bottom: 0.5px solid var(--foreground);
-        
+
         &:hover {
             background-color: var(--foreground);
             color: var(--background);
         }
+
+        font-size: 0.75rem;
+        @include md {
+            font-size: 1rem;
+        }
+    }
+}
+
+.copyright {
+    font-size: 0.75rem;
+    @include md {
+        font-size: 1rem;
+
     }
 }

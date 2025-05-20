@@ -21,20 +21,20 @@ export default async function NavBar() {
   return (
     <NavContainer>
       <div className="row">
-        <div className="col-2">
+        <div className="col-md-3 col-4 align-items-center d-flex">
           {navSiteData?.title ? (
             <Link href={"/"}>{navSiteData?.title}</Link>
           ) : (
             <Link href={"/"}>Portfolio</Link>
           )}
         </div>
-        <div className="col-2">
+        <div className="col-md-3 col-4 align-items-center d-flex">
           {navSiteData?.subtitle ? <span>{navSiteData?.subtitle}</span> : null}
         </div>
-        <div className="col-2">
+        <div className="col-md-3 col-3 align-items-center d-flex">
           <PageTitle menuItems={navMenuItems} />
         </div>
-        <span className="menu-button__wrapper col-2 offset-4">
+        <span className="menu-button__wrapper col-md-1 offset-md-2 col-1">
           <MenuButton />
         </span>
       </div>

@@ -35,7 +35,7 @@ export default function ProjectSection({
       variants={whileInView}
       whileInView="animate"
       initial="initial"
-      className="project-section__container container mb-5"
+      className="project-section__container container mb-5 mt-2"
     >
       <div className="project-section-header__container row">
         <h1 className="section-title col">Projects</h1>
@@ -43,7 +43,7 @@ export default function ProjectSection({
           className="col align-items-end"
           style={{ display: "flex", gap: "0.5rem", flexDirection: "column" }}
         >
-          <form>
+          <form className="change-view__options">
             <fieldset>
               <input
                 id={"Grid View"}

@@ -1,3 +1,5 @@
+@use "@/styles/_media-queries.scss" as *;
+
 .contact-section__container {
 
     ul {
@@ -15,10 +17,18 @@
         width: 100%;
         font-family: var(--font-gnu);
         white-space: pre;
+        font-size: 0.8rem;
+        @include md {
+            font-size: 1.2rem;
+        }
     }
 
     .input__wrapper {
-        height: 2rem;
+        height: 1rem;
+
+        @include md {
+            height: 2rem;
+        }
     }
 
     textarea {
@@ -44,7 +54,6 @@
     input,
     button {
         // font-family: 'Times New Roman', Times, serif;
-        font-size: 1rem;
         text-transform: uppercase;
     }
 
@@ -64,7 +73,6 @@
         color: inherit;
         border-bottom: 0.5px solid var(--foreground);
         text-transform: none;
-        font-size: 1.2rem;
         font-weight: 500;
     }
 
